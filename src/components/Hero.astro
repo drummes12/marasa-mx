@@ -35,7 +35,7 @@ import { imagesHero } from '@/consts/images'
     aria-label='Imagen de hero anterior'
   >
     <CaretRight
-      class='rotate-180 size-16 text-white/50 hover:size-20 hover:text-white/90 transition-all'
+      class='rotate-180 size-10 text-white/50 hover:size-14 hover:text-white/90 transition-all'
     />
   </button>
 
@@ -45,7 +45,7 @@ import { imagesHero } from '@/consts/images'
     aria-label='Imagen de hero siguiente'
   >
     <CaretRight
-      class='size-16 text-white/50 hover:size-20 hover:text-white/90 transition-all'
+      class='size-10 text-white/50 hover:size-14 hover:text-white/90 transition-all'
     />
   </button>
 
@@ -73,8 +73,12 @@ import { imagesHero } from '@/consts/images'
   const imagesHero = JSON.parse(imagesHeroStr || '[]')
 
   const carouselWrapper = document.getElementById('hero-carousel-wrapper')
-  const carouselIndicatorsContainer = document.getElementById('hero-carousel-indicators')
-  const carouselIndicators = document.querySelectorAll('#hero-carousel-indicators button')
+  const carouselIndicatorsContainer = document.getElementById(
+    'hero-carousel-indicators'
+  )
+  const carouselIndicators = document.querySelectorAll(
+    '#hero-carousel-indicators button'
+  )
   const carouselPrev = document.getElementById('hero-carousel-prev')
   const carouselNext = document.getElementById('hero-carousel-next')
 
