@@ -15,3 +15,63 @@ import '../styles/global.css'
     <slot />
   </body>
 </html>
+
+<script is:inline>
+  const carousels = document.querySelectorAll('#carousel')
+
+  carousels.forEach((carousel) => {
+    if (!carousel) return
+    const imagesStr = carousel.dataset.images
+    const title = carousel.dataset.title
+    const images = JSON.parse(imagesStr || '[]')
+
+    const carouselWrapper = carousel.querySelector(`#${title}-carousel-wrapper`)
+    const carouselIndicatorsContainer = document.getElementById(
+      `${title}-carousel-indicators`
+    )
+    const carouselIndicators = document.querySelectorAll(
+      `#${title}-carousel-indicators button`
+    )
+    const carouselPrev = document.getElementById(`${title}-carousel-prev`)
+    const carouselNext = document.getElementById(`${title}-carousel-next`)
+
+    let currentIndex = 0
+    const total = images.length
+
+    updateCarouselSlide(currentIndex)
+    initializeCarousel(carouselIndicatorsContainer)
+
+    carouselPrev?.addEventListener('click', () => {
+      const newIndex = (currentIndex - 1 + total) % total
+      updateCarouselSlide(newIndex)
+    })
+
+    carouselNext?.addEventListener('click', () => {
+      const newIndex = (currentIndex + 1) % total
+      updateCarouselSlide(newIndex)
+    })
+
+    carouselIndicators.forEach((btn, i) => {
+      btn.addEventListener('click', () => updateCarouselSlide(i))
+    })
+
+    function updateCarouselSlide(index) {
+      if (!carouselWrapper) return
+      currentIndex = index
+      const translateX = -index * 100
+      carouselWrapper.style.transform = `translateX(${translateX}%)`
+
+      carouselIndicators.forEach((btn, i) => {
+        btn.classList.toggle('bg-white/90', i === index)
+        btn.classList.toggle('bg-white/50', i !== index)
+      })
+    }
+
+    function initializeCarousel(carouselIndicatorsContainer) {
+      carouselPrev?.classList.remove('hidden')
+      carouselNext?.classList.remove('hidden')
+      carouselIndicatorsContainer?.classList.remove('hidden')
+      carouselIndicatorsContainer?.classList.add('flex')
+    }
+  })
+</script>

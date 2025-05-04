@@ -1,0 +1,38 @@
+---
+import Carousel from './Carousel.astro'
+import Section from './Section.astro'
+
+import { imagesWelcome } from '@/consts/images'
+---
+
+<Section class='flex flex-col items-center justify-center'>
+  <div class='px-8 md:px-32 w-full'>
+    <heading
+      class='uppercase text-center py-20 h-fit flex flex-col items-center gap-8'
+    >
+      <h2 class='text-xl tracking-[1rem] text-secondary'>Bienvenido a</h2>
+      <h1
+        class='text-5xl tracking-[1rem] font-semibold leading-tight text-primary'
+      >
+        Marasa wonderful living
+      </h1>
+    </heading>
+
+    <p
+      class='text-center text-xl font-light tracking-widest text-primary text-pretty'
+    >
+      Un exclusivo desarrollo en Puerto Vallarta que redefine el concepto de
+      hogar. Ubicado en una de las zonas más privilegiadas de la ciudad, ofrece
+      una perfecta combinación de privacidad, comodidad y estilo de vida único.
+    </p>
+  </div>
+
+  <div class='h-screen w-full'>
+    <Carousel
+      images={imagesWelcome}
+      title='Welcome'
+      classWrapper='p-20 gap-40'
+      buttonsColor='var(--color-primary)'
+    />
+  </div>
+</Section>

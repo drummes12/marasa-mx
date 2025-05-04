@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+export interface Props extends HTMLAttributes<'section'> {
+  class?: string
+}
+const { class: className, ...restProps } = Astro.props
+---
+
+<section
+  class:list={[
+    'w-full min-h-screen overflow-hidden bg-white flex items-center justify-center max-w-7xl mx-auto',
+    className
+  ]}
+  {...restProps}
+>
+  <slot />
+</section>

@@ -2,26 +2,39 @@
 import CaretRight from '@/components/icons/caret-right.astro'
 
 export interface Props {
+  class?: string
   images: {
     src: string
     alt: string
   }[]
   title: string
+  classWrapper?: string
+  buttonsColor?: string
 }
 
-const { images, title: titleProp } = Astro.props
+const {
+  class: className,
+  images,
+  title: titleProp,
+  classWrapper,
+  buttonsColor = '#fff'
+} = Astro.props
 
 const title = titleProp.toLowerCase().replace(/\s+/g, '-')
 ---
 
 <article
-  class='relative w-full h-full overflow-hidden'
+  id='carousel'
+  class:list={[className, 'relative w-full h-full overflow-hidden']}
   data-images={JSON.stringify(images)}
   data-title={title}
 >
   <div
     id={`${title}-carousel-wrapper`}
-    class='flex w-full h-full transition-transform duration-300'
+    class:list={[
+      classWrapper,
+      'flex w-full h-full transition-transform duration-300'
+    ]}
   >
     {
       images.map(({ src, alt }) => (
@@ -37,7 +50,8 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     aria-label={`Imagen de ${title} anterior`}
   >
     <CaretRight
-      class='rotate-180 size-10 text-white/50 hover:size-14 hover:text-white/90 transition-all'
+      class='rotate-180 size-10 opacity-50 hover:size-14 hover:opacity-90 transition-all'
+      style={`color: ${buttonsColor}`}
     />
   </button>
 
@@ -47,7 +61,8 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     aria-label={`Imagen de ${title} siguiente`}
   >
     <CaretRight
-      class='size-10 text-white/50 hover:size-14 hover:text-white/90 transition-all'
+      class='size-10 opacity-50 hover:size-14 hover:opacity-90 transition-all'
+      style={`color: ${buttonsColor}`}
     />
   </button>
 
@@ -61,7 +76,9 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
           <li class='size-8 flex justify-center items-center'>
             <button
               data-index={index}
-              class='size-4 bg-white/50 rounded-full hover:size-8 hover:bg-white/90 transition-all cursor-pointer'
+              class='size-4 opacity-50 rounded-full hover:size-8 hover:opacity-90 transition-all cursor-pointer'
+              aria-label={`Imagen de ${title} ${index + 1}`}
+              style={`background-color: ${buttonsColor}`}
             />
           </li>
         ))
@@ -69,55 +86,3 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     </ul>
   </div>
 </article>
-
-<script>
-  const article = document.querySelector('article')
-  const imagesStr = article?.dataset.images
-  const title = article?.dataset.title
-  const images = JSON.parse(imagesStr || '[]')
-
-  const carouselWrapper = document.getElementById(`${title}-carousel-wrapper`)
-  const carouselIndicatorsContainer = document.getElementById(`${title}-carousel-indicators`)
-  const carouselIndicators = document.querySelectorAll(`#${title}-carousel-indicators button`)
-  const carouselPrev = document.getElementById(`${title}-carousel-prev`)
-  const carouselNext = document.getElementById(`${title}-carousel-next`)
-
-  let currentIndex = 0
-  const total = images.length
-
-  updateCarouselSlide(currentIndex)
-  initializeCarousel()
-
-  carouselPrev?.addEventListener('click', () => {
-    const newIndex = (currentIndex - 1 + total) % total
-    updateCarouselSlide(newIndex)
-  })
-
-  carouselNext?.addEventListener('click', () => {
-    const newIndex = (currentIndex + 1) % total
-    updateCarouselSlide(newIndex)
-  })
-
-  carouselIndicators.forEach((btn, i) => {
-    btn.addEventListener('click', () => updateCarouselSlide(i))
-  })
-
-  function updateCarouselSlide(index: number) {
-    if (!carouselWrapper) return
-    currentIndex = index
-    const translateX = -index * 100
-    carouselWrapper.style.transform = `translateX(${translateX}%)`
-
-    carouselIndicators.forEach((btn, i) => {
-      btn.classList.toggle('bg-white/90', i === index)
-      btn.classList.toggle('bg-white/50', i !== index)
-    })
-  }
-
-  function initializeCarousel() {
-    carouselPrev?.classList.remove('hidden')
-    carouselNext?.classList.remove('hidden')
-    carouselIndicatorsContainer?.classList.remove('hidden')
-    carouselIndicatorsContainer?.classList.add('flex')
-  }
-</script>
