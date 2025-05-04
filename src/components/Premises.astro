@@ -1,0 +1,56 @@
+---
+import Ripple from './icons/ripple.astro'
+import Section from './Section.astro'
+---
+
+<div class='w-full h-full bg-primary/30'>
+  <Section class='flex flex-col items-center justify-center !bg-transparent'>
+    <div class='px-8 md:px-24 py-20 w-full text-primary'>
+      <heading
+        class='uppercase text-center mb-20 h-fit flex flex-col items-center gap-8'
+      >
+        <h2 class='text-xl tracking-[1rem]'>Nuestras Premisas</h2>
+        <h1 class='text-5xl tracking-[1rem] font-semibold leading-tight'>
+          Tu lugar ideal
+        </h1>
+      </heading>
+
+      <p
+        class='text-center text-xl font-light tracking-widest text-pretty max-w-[80ch] mx-auto mb-20'
+      >
+        Marasa es un desarrollo que destaca por su exclusividad, diseño
+        arquitectónico y ubicación estratégica. Con 23 unidades, ofrece
+        privacidad y comodidad. Sus amenidades de lujo y acabados de calidad
+        superior hacen de este proyecto un lugar único para vivir.
+      </p>
+
+      <ul class='flex flex-row flex-wrap gap-8 justify-center items-center'>
+        <li>
+          <Ripple class='size-24' />
+          <h5>Playas Cercanas</h5>
+        </li>
+        <li>
+          <Ripple class='size-24' />
+          <h5>Plazas Comerciales</h5>
+        </li>
+        <li>
+          <Ripple class='size-24' />
+          <h5>Áreas Verdes</h5>
+        </li>
+      </ul>
+    </div>
+  </Section>
+</div>
+
+<style>
+  ul {
+    & li {
+      @apply flex flex-col items-center justify-center text-center;
+      flex: 1;
+      min-width: 8rem;
+      max-width: 15rem;
+      font-size: large;
+      font-weight: bold;
+    }
+  }
+</style>
