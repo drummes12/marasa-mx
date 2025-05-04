@@ -10,6 +10,7 @@ export interface Props {
   title: string
   classWrapper?: string
   buttonsColor?: string
+  autoPlay?: boolean
 }
 
 const {
@@ -17,7 +18,8 @@ const {
   images,
   title: titleProp,
   classWrapper,
-  buttonsColor = '#fff'
+  buttonsColor = '#fff',
+  autoPlay = false
 } = Astro.props
 
 const title = titleProp.toLowerCase().replace(/\s+/g, '-')
@@ -28,6 +30,7 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
   class:list={[className, 'relative w-full h-full overflow-hidden']}
   data-images={JSON.stringify(images)}
   data-title={title}
+  data-auto-play={autoPlay}
 >
   <div
     id={`${title}-carousel-wrapper`}

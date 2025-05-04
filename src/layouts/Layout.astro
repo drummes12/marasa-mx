@@ -23,6 +23,7 @@ import '../styles/global.css'
     if (!carousel) return
     const imagesStr = carousel.dataset.images
     const title = carousel.dataset.title
+    const autoPlay = carousel.dataset.autoPlay === 'true'
     const images = JSON.parse(imagesStr || '[]')
 
     const carouselWrapper = carousel.querySelector(`#${title}-carousel-wrapper`)
@@ -37,23 +38,41 @@ import '../styles/global.css'
 
     let currentIndex = 0
     const total = images.length
+    let intervalId
 
     updateCarouselSlide(currentIndex)
     initializeCarousel(carouselIndicatorsContainer)
 
+    const resetInterval = () => {
+      if (intervalId) clearInterval(intervalId)
+      if (autoPlay) {
+        intervalId = setInterval(() => {
+          const newIndex = (currentIndex + 1) % total
+          updateCarouselSlide(newIndex)
+        }, 10000)
+      }
+    }
+
     carouselPrev?.addEventListener('click', () => {
       const newIndex = (currentIndex - 1 + total) % total
       updateCarouselSlide(newIndex)
+      resetInterval()
     })
 
     carouselNext?.addEventListener('click', () => {
       const newIndex = (currentIndex + 1) % total
       updateCarouselSlide(newIndex)
+      resetInterval()
     })
 
     carouselIndicators.forEach((btn, i) => {
-      btn.addEventListener('click', () => updateCarouselSlide(i))
+      btn.addEventListener('click', () => {
+        updateCarouselSlide(i)
+        resetInterval()
+      })
     })
+
+    resetInterval()
 
     function updateCarouselSlide(index) {
       if (!carouselWrapper) return
@@ -62,8 +81,8 @@ import '../styles/global.css'
       carouselWrapper.style.transform = `translateX(${translateX}%)`
 
       carouselIndicators.forEach((btn, i) => {
-        btn.classList.toggle('bg-white/90', i === index)
-        btn.classList.toggle('bg-white/50', i !== index)
+        btn.classList.toggle('opacity-90', i === index)
+        btn.classList.toggle('opacity-50', i !== index)
       })
     }
 
