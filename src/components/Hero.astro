@@ -1,23 +1,14 @@
 ---
 import logo from '@/assets/logo.png'
-import CaretRight from '@/components/icons/caret-right.astro'
 import { imagesHero } from '@/consts/images'
+import Carousel from './Carousel.astro'
 ---
 
 <section
   class='relative w-screen h-screen overflow-hidden'
   data-images={JSON.stringify(imagesHero)}
 >
-  <div
-    id='hero-carousel-wrapper'
-    class='flex w-full h-full transition-transform duration-300'
-  >
-    {
-      imagesHero.map((img) => (
-        <img src={img.src} alt='' class='min-w-full h-full object-cover' />
-      ))
-    }
-  </div>
+  <Carousel images={imagesHero} title='Hero' />
 
   <header
     class='absolute top-0 flex flex-col items-center justify-center text-white w-full py-8'
@@ -28,96 +19,4 @@ import { imagesHero } from '@/consts/images'
     </h1>
     <h3 class='uppercase text-md font-extralight'>Wonderful living</h3>
   </header>
-
-  <button
-    id='hero-carousel-prev'
-    class='absolute left-4 top-0 bottom-0 cursor-pointer hidden'
-    aria-label='Imagen de hero anterior'
-  >
-    <CaretRight
-      class='rotate-180 size-10 text-white/50 hover:size-14 hover:text-white/90 transition-all'
-    />
-  </button>
-
-  <button
-    id='hero-carousel-next'
-    class='absolute right-4 top-0 bottom-0 cursor-pointer hidden'
-    aria-label='Imagen de hero siguiente'
-  >
-    <CaretRight
-      class='size-10 text-white/50 hover:size-14 hover:text-white/90 transition-all'
-    />
-  </button>
-
-  <div class='absolute bottom-8 w-full justify-center'>
-    <ul
-      id='hero-carousel-indicators'
-      class='flex-row items-center justify-center gap-8 hidden'
-    >
-      {
-        Array.from({ length: imagesHero.length }).map((_, index) => (
-          <li class='size-8 flex justify-center items-center'>
-            <button
-              data-index={index}
-              class='size-4 bg-white/50 rounded-full hover:size-8 hover:bg-white/90 transition-all cursor-pointer'
-            />
-          </li>
-        ))
-      }
-    </ul>
-  </div>
 </section>
-
-<script>
-  const imagesHeroStr = document.querySelector('section')?.dataset.images
-  const imagesHero = JSON.parse(imagesHeroStr || '[]')
-
-  const carouselWrapper = document.getElementById('hero-carousel-wrapper')
-  const carouselIndicatorsContainer = document.getElementById(
-    'hero-carousel-indicators'
-  )
-  const carouselIndicators = document.querySelectorAll(
-    '#hero-carousel-indicators button'
-  )
-  const carouselPrev = document.getElementById('hero-carousel-prev')
-  const carouselNext = document.getElementById('hero-carousel-next')
-
-  let currentIndex = 0
-  const total = imagesHero.length
-
-  updateCarouselSlide(currentIndex)
-  initializeCarousel()
-
-  carouselPrev?.addEventListener('click', () => {
-    const newIndex = (currentIndex - 1 + total) % total
-    updateCarouselSlide(newIndex)
-  })
-
-  carouselNext?.addEventListener('click', () => {
-    const newIndex = (currentIndex + 1) % total
-    updateCarouselSlide(newIndex)
-  })
-
-  carouselIndicators.forEach((btn, i) => {
-    btn.addEventListener('click', () => updateCarouselSlide(i))
-  })
-
-  function updateCarouselSlide(index: number) {
-    if (!carouselWrapper) return
-    currentIndex = index
-    const translateX = -index * 100
-    carouselWrapper.style.transform = `translateX(${translateX}%)`
-
-    carouselIndicators.forEach((btn, i) => {
-      btn.classList.toggle('bg-white/90', i === index)
-      btn.classList.toggle('bg-white/50', i !== index)
-    })
-  }
-
-  function initializeCarousel() {
-    carouselPrev?.classList.remove('hidden')
-    carouselNext?.classList.remove('hidden')
-    carouselIndicatorsContainer?.classList.remove('hidden')
-    carouselIndicatorsContainer?.classList.add('flex')
-  }
-</script>
