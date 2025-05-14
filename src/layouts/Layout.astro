@@ -7,7 +7,7 @@ const { title = 'Marasa - Wonderful living', description = 'Marasa' } =
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='es'>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
@@ -76,6 +76,31 @@ const { title = 'Marasa - Wonderful living', description = 'Marasa' } =
         resetInterval()
       })
     })
+
+    let touchStartX = 0
+    let touchEndX = 0
+
+    carouselWrapper?.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX
+    })
+
+    carouselWrapper?.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX
+      handleGesture()
+    })
+
+    function handleGesture() {
+      const diff = touchEndX - touchStartX
+      if (Math.abs(diff) < 30) return
+      if (diff > 0) {
+        const newIndex = (currentIndex - 1 + total) % total
+        updateCarouselSlide(newIndex)
+      } else {
+        const newIndex = (currentIndex + 1) % total
+        updateCarouselSlide(newIndex)
+      }
+      resetInterval()
+    }
 
     resetInterval()
 
