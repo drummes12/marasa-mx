@@ -1,5 +1,9 @@
 ---
 import '../styles/global.css'
+import '@fontsource-variable/montserrat'
+
+const { title = 'Marasa - Wonderful living', description = 'Marasa' } =
+  Astro.props
 ---
 
 <!doctype html>
@@ -9,7 +13,8 @@ import '../styles/global.css'
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href='/favicon.png' type='image/png' />
     <meta name='generator' content={Astro.generator} />
-    <title>Marasa - Wonderful living</title>
+    <meta name='description' content={description} />
+    <title>{title}</title>
   </head>
   <body>
     <slot />

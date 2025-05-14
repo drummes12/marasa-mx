@@ -1,5 +1,5 @@
 ---
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo-blanco.svg'
 import Carousel from './Carousel.astro'
 
 import { imagesHero } from '@/consts/images'
@@ -10,10 +10,6 @@ import { imagesHero } from '@/consts/images'
   <header
     class='absolute top-0 flex flex-col items-center justify-center text-white w-full py-8'
   >
-    <img id='background' src={logo.src} alt='Logo de Marasa' class='size-10' />
-    <h1 class='uppercase text-5xl flex items-end'>
-      Marasa<span class='pl-1 text-sm font-extralight'>&reg;</span>
-    </h1>
-    <h3 class='uppercase text-md font-extralight'>Wonderful living</h3>
+    <img id='background' src={logo.src} alt='Logo de Marasa' class='h-32' />
   </header>
 </section>

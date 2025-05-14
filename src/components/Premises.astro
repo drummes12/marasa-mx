@@ -3,14 +3,16 @@ import Ripple from './icons/ripple.astro'
 import Section from './Section.astro'
 ---
 
-<div class='w-full h-full bg-primary/30'>
+<div class='w-full h-fit bg-primary-blue/30'>
   <Section class='flex flex-col items-center justify-center !bg-transparent'>
-    <div class='px-8 md:px-24 py-20 w-full text-primary'>
+    <div class='px-8 md:px-24 py-20 w-full text-primary-blue'>
       <heading
         class='uppercase text-center mb-20 h-fit flex flex-col items-center gap-8'
       >
-        <h2 class='text-xl tracking-[1rem]'>Nuestras Premisas</h2>
-        <h1 class='text-5xl tracking-[1rem] font-semibold leading-tight'>
+        <h2 class='text-lg sm:text-xl tracking-[1rem]'>Nuestras Premisas</h2>
+        <h1
+          class='text-3xl sm:text-5xl tracking-[1rem] font-semibold leading-tight'
+        >
           Tu lugar ideal
         </h1>
       </heading>
@@ -47,7 +49,7 @@ import Section from './Section.astro'
     & li {
       @apply flex flex-col items-center justify-center text-center;
       flex: 1;
-      min-width: 8rem;
+      min-width: 12rem;
       max-width: 15rem;
       font-size: large;
       font-weight: bold;

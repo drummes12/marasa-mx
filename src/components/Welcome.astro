@@ -10,16 +10,18 @@ import { imagesWelcome } from '@/consts/images'
     <heading
       class='uppercase text-center py-20 h-fit flex flex-col items-center gap-8'
     >
-      <h2 class='text-xl tracking-[1rem] text-secondary'>Bienvenido a</h2>
+      <h2 class='text-md md:text-xl tracking-[1rem] text-primary-coral'>
+        Bienvenido a
+      </h2>
       <h1
-        class='text-5xl tracking-[1rem] font-semibold leading-tight text-primary'
+        class='text-2xl sm:text-3xl md:text-5xl tracking-[1rem] font-semibold leading-tight text-primary-blue'
       >
         Marasa wonderful living
       </h1>
     </heading>
 
     <p
-      class='text-center text-xl font-light tracking-widest text-primary text-pretty max-w-[80ch] mx-auto'
+      class='text-center text-xl font-light tracking-widest text-primary-blue text-pretty max-w-[80ch] mx-auto'
     >
       Un exclusivo desarrollo en Puerto Vallarta que redefine el concepto de
       hogar. Ubicado en una de las zonas más privilegiadas de la ciudad, ofrece
@@ -27,12 +29,12 @@ import { imagesWelcome } from '@/consts/images'
     </p>
   </div>
 
-  <div class='h-screen w-full'>
+  <div class='h-[85vh] w-full'>
     <Carousel
       images={imagesWelcome}
       title='Welcome'
-      classWrapper='p-20 gap-40'
-      buttonsColor='var(--color-primary)'
+      classWrapper='p-14 md:p-20 gap-28 md:gap-40'
+      buttonsColor='var(--color-primary-blue)'
     />
   </div>
 </Section>

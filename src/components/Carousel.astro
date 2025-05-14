@@ -41,7 +41,7 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
   >
     {
       images.map(({ src, alt }) => (
-        <img src={src} alt={alt} class='min-w-full h-full object-cover' />
+        <img src={src} alt={alt} class='min-w-full min-h-full object-cover' />
       ))
     }
   </div>
@@ -53,7 +53,7 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     aria-label={`Imagen de ${title} anterior`}
   >
     <CaretRight
-      class='rotate-180 size-10 opacity-50 hover:size-14 hover:opacity-90 transition-all'
+      class='rotate-180 size-7 md:size-10 opacity-50 hover:size-14 hover:opacity-90 transition-all'
       style={`color: ${buttonsColor}`}
     />
   </button>
@@ -64,22 +64,22 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     aria-label={`Imagen de ${title} siguiente`}
   >
     <CaretRight
-      class='size-10 opacity-50 hover:size-14 hover:opacity-90 transition-all'
+      class='size-7 md:size-10 opacity-50 hover:size-14 hover:opacity-90 transition-all'
       style={`color: ${buttonsColor}`}
     />
   </button>
 
-  <div class='absolute bottom-8 w-full justify-center'>
+  <div class='absolute bottom-4 md:bottom-8 w-full justify-center'>
     <ul
       id={`${title}-carousel-indicators`}
       class='flex-row items-center justify-center gap-8 hidden'
     >
       {
         Array.from({ length: images.length }).map((_, index) => (
-          <li class='size-8 flex justify-center items-center'>
+          <li class='size-4 md:size-8 flex justify-center items-center'>
             <button
               data-index={index}
-              class='size-4 opacity-50 rounded-full hover:size-8 hover:opacity-90 transition-all cursor-pointer'
+              class='size-2 md:size-4 opacity-50 rounded-full hover:size-4 md:hover:size-8 hover:opacity-90 transition-all cursor-pointer'
               aria-label={`Imagen de ${title} ${index + 1}`}
               style={`background-color: ${buttonsColor}`}
             />
