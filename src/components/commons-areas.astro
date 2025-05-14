@@ -1,0 +1,56 @@
+---
+import { COMMONS_AREAS } from '@/consts/commonsAreas'
+import Section from './Section.astro'
+import CommonAreaItem from './common-area-item.astro'
+---
+
+<div class='w-full h-fit bg-primary-blue'>
+  <Section class='flex flex-col items-center justify-center !bg-transparent'>
+    <div class='px-8 md:px-24 py-20 w-full text-white'>
+      <heading
+        class='uppercase text-center h-fit flex flex-col items-center gap-12'
+      >
+        <h2 class='text-md sm:text-xl tracking-[1rem]'>
+          Conoce nuestras diferentes
+        </h2>
+        <h1
+          class='text-3xl sm:text-5xl tracking-[1rem] font-semibold leading-tight'
+        >
+          Áreas comunes
+        </h1>
+      </heading>
+
+      <div
+        class='mt-12 w-full flex flex-row flex-wrap items-center justify-center gap-x-20 gap-y-10'
+      >
+        <div class='flex-1 min-w-[250px]'>
+          <img
+            src='https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg'
+            alt='Imagen de estilo de vida'
+            class='aspect-[7/9] lg:aspect-video object-cover rounded-xl'
+          />
+        </div>
+
+        <ul class='flex-1 flex flex-col min-w-[250px] md:max-w-[30ch]'>
+          {
+            COMMONS_AREAS.map(({ title, description }, index) => (
+              <CommonAreaItem
+                index={index}
+                title={title}
+                description={description}
+              />
+            ))
+          }
+
+          <li class='mx-auto mt-12'>
+            <a
+              href='#'
+              class='text-primary-coral underline cursor-pointer uppercase text-lg'
+              >Cargar más</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+</div>
