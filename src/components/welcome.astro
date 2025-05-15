@@ -3,6 +3,10 @@ import Carousel from './carousel.astro'
 import Section from './section.astro'
 
 import { imagesWelcome } from '@/consts/images'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <Section class='flex flex-col items-center justify-center'>
@@ -11,21 +15,19 @@ import { imagesWelcome } from '@/consts/images'
       class='uppercase text-center py-20 h-fit flex flex-col items-center gap-8'
     >
       <h2 class='text-md md:text-xl tracking-[1rem] text-primary-coral'>
-        Bienvenido a
+        {t('welcome.section')}
       </h2>
       <h1
         class='text-2xl sm:text-3xl md:text-5xl tracking-[1rem] font-semibold leading-tight text-primary-blue'
       >
-        Marasa wonderful living
+        {t('welcome.title')}
       </h1>
     </heading>
 
     <p
       class='text-center text-xl font-light tracking-widest text-primary-blue text-pretty max-w-[80ch] mx-auto'
     >
-      Un exclusivo desarrollo en Puerto Vallarta que redefine el concepto de
-      hogar. Ubicado en una de las zonas más privilegiadas de la ciudad, ofrece
-      una perfecta combinación de privacidad, comodidad y estilo de vida único.
+      {t('welcome.paragraph')}
     </p>
   </div>
 

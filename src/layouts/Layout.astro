@@ -1,20 +1,21 @@
 ---
-import '../styles/global.css'
+import '@/styles/global.css'
 import '@fontsource-variable/montserrat'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 
-const { title = 'Marasa - Wonderful living', description = 'Marasa' } =
-  Astro.props
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <!doctype html>
-<html lang='es'>
+<html lang={lang}>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href='/favicon.png' type='image/png' />
     <meta name='generator' content={Astro.generator} />
-    <meta name='description' content={description} />
-    <title>{title}</title>
+    <meta name='description' content={t('home.description')} />
+    <title>{t('home.title')}</title>
   </head>
   <body>
     <slot />

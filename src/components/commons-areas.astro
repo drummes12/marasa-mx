@@ -1,7 +1,35 @@
 ---
-import { COMMONS_AREAS } from '@/consts/commonsAreas'
 import Section from './section.astro'
 import CommonAreaItem from './common-area-item.astro'
+
+import { imagesCommonsAreas } from '@/consts/images'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const commonsAreas = [
+  {
+    title: t('commons-areas.items.security-24-hrs.title'),
+    description: t('commons-areas.items.security-24-hrs.description')
+  },
+  {
+    title: t('commons-areas.items.co-working-area.title'),
+    description: t('commons-areas.items.co-working-area.description')
+  },
+  {
+    title: t('commons-areas.items.event-room.title'),
+    description: t('commons-areas.items.event-room.description')
+  },
+  {
+    title: t('commons-areas.items.gymnasium.title'),
+    description: t('commons-areas.items.gymnasium.description')
+  },
+  {
+    title: t('commons-areas.items.administration-office.title'),
+    description: t('commons-areas.items.administration-office.description')
+  }
+]
 ---
 
 <div class='w-full h-fit bg-primary-blue'>
@@ -11,12 +39,12 @@ import CommonAreaItem from './common-area-item.astro'
         class='uppercase text-center h-fit flex flex-col items-center gap-12'
       >
         <h2 class='text-md sm:text-xl tracking-[1rem]'>
-          Conoce nuestras diferentes
+          {t('commons-areas.section')}
         </h2>
         <h1
           class='text-3xl sm:text-5xl tracking-[1rem] font-semibold leading-tight'
         >
-          Áreas comunes
+          {t('commons-areas.title')}
         </h1>
       </heading>
 
@@ -25,15 +53,15 @@ import CommonAreaItem from './common-area-item.astro'
       >
         <div class='flex-1 min-w-[250px]'>
           <img
-            src='https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg'
-            alt='Imagen de estilo de vida'
+            src={imagesCommonsAreas.src}
+            alt={t('common-areas.img.alt')}
             class='aspect-[7/9] lg:aspect-video object-cover rounded-xl'
           />
         </div>
 
         <ul class='flex-1 flex flex-col min-w-[250px] md:max-w-[30ch]'>
           {
-            COMMONS_AREAS.map(({ title, description }, index) => (
+            commonsAreas.map(({ title, description }, index) => (
               <CommonAreaItem
                 index={index}
                 title={title}

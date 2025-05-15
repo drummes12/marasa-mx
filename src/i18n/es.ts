@@ -1,0 +1,43 @@
+export default {
+  'home.title': 'Marasa Wonderful Living',
+  'home.description': 'Marasa',
+  'welcome.section': 'Bienvenido a',
+  'welcome.title': 'Marasa Wonderful Living',
+  'welcome.paragraph':
+    'Un exclusivo desarrollo en Puerto Vallarta que redefine el concepto de hogar. Ubicado en una de las zonas más privilegiadas de la ciudad, ofrece una perfecta combinación de privacidad, comodidad y estilo de vida único.',
+  'options.tour': 'Tour virtual',
+  'options.model': 'Unidad modelo',
+  'options.inventory': 'Inventario',
+  'options.magazine': 'Revista',
+  'life-style.section': 'Estilo de vida',
+  'life-style.title': 'Vive al máximo',
+  'life-style.paragraph':
+    'En Marasa, cada día es una oportunidad para disfrutar al máximo. Vive rodeado de comodidad y exclusividad, con amenidades que complementan un estilo de vida activo y relajado. Desde un gimnasio equipado hasta una alberca con jacuzzi, aquí encuentras espacios pensados para compar tir momentos únicos con tu familia o amigos. Disfruta del acceso a áreas verdes, espacios coworking y rooftop, todo diseñado para quienes buscan calidad y distinción en cada detalle.',
+  'life-style.image.alt': 'Imagen de estilo de vida',
+  'premises.section': 'Nuestras premisas',
+  'premises.title': 'Tu lugar ideal',
+  'premises.paragraph':
+    'Marasa es un desarrollo que destaca por su exclusividad, diseño arquitectónico y ubicación estratégica. Con 23 unidades, ofrece privacidad y comodidad. Sus amenidades de lujo y acabados de calidad superior hacen de este proyecto un lugar único para vivir.',
+  'premises.items.nearby-beaches': 'Playas Cercanas',
+  'premises.items.commercial-plazas': 'Plazas Comerciales',
+  'premises.items.green-areas': 'Áreas Verdes',
+  'commons-areas.section': 'Conoce nuestras diferentes',
+  'commons-areas.title': 'Áreas comunes',
+  'common-areas.img.alt': 'Imagen de área común',
+  'commons-areas.items.security-24-hrs.title': 'Seguridad 24 HRS',
+  'commons-areas.items.security-24-hrs.description':
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+  'commons-areas.items.co-working-area.title': 'Área de co-working',
+  'commons-areas.items.co-working-area.description':
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+  'commons-areas.items.event-room.title': 'Salón de eventos',
+  'commons-areas.items.event-room.description':
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+  'commons-areas.items.gymnasium.title': 'Gimnasio',
+  'commons-areas.items.gymnasium.description':
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+  'commons-areas.items.administration-office.title':
+    'Oficina de administración',
+  'commons-areas.items.administration-office.description':
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.'
+}

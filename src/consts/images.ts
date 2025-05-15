@@ -35,3 +35,13 @@ export const imagesWelcome = [
     alt: 'image-4'
   }
 ]
+
+export const imagesCommonsAreas = {
+  src: 'https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg',
+  alt: 'Imagen de área común'
+}
+
+export const imagesLifeStyle = {
+  src: 'https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg',
+  alt: 'Imagen de estilo de vida'
+}
