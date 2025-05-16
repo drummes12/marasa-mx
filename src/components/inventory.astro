@@ -1,0 +1,65 @@
+---
+import Section from './section.astro'
+
+import inventory from '@/assets/inventory.jpg'
+
+const inventoryData = [
+  // First row
+  { id: 1, x: '18.5%', y: '18%', status: 'available' },
+  { id: 2, x: '23.7%', y: '19%', status: 'available' },
+  { id: 3, x: '29.2%', y: '21%', status: 'available' },
+  { id: 4, x: '34.5%', y: '22.5%', status: 'available' },
+  { id: 5, x: '40.3%', y: '24.5%', status: 'available' },
+  { id: 6, x: '46%', y: '26.5%', status: 'available' },
+
+  // Second row
+  { id: 7, x: '25.5%', y: '34%', status: 'available' },
+  { id: 8, x: '30%', y: '37.5%', status: 'reserved' },
+  { id: 9, x: '34.5%', y: '41.5%', status: 'sold' },
+  { id: 10, x: '39.5%', y: '45.5%', status: 'sold' },
+  { id: 11, x: '44.5%', y: '49.5%', status: 'sold' },
+
+  // Third row
+  { id: 12, x: '62%', y: '65%', status: 'reserved' },
+  { id: 13, x: '66%', y: '61%', status: 'sold' },
+  { id: 14, x: '67.5%', y: '52.5%', status: 'available' },
+  { id: 15, x: '71.5%', y: '49%', status: 'reserved' },
+  { id: 16, x: '72.5%', y: '41%', status: 'available' },
+  { id: 17, x: '76.5%', y: '38%', status: 'available' },
+  { id: 18, x: '77%', y: '30%', status: 'available' },
+  { id: 19, x: '81%', y: '25.5%', status: 'reserved' }
+]
+
+const statusColors = {
+  available: 'bg-available',
+  reserved: 'bg-reserved',
+  sold: 'bg-sold'
+}
+---
+
+<Section>
+  <div class='relative w-full h-fit'>
+    <img src={inventory.src} alt='Inventario' />
+    <div class='absolute inset-0 w-full h-full'>
+      {
+        inventoryData.map(({ x, y, status }) => (
+          <div
+            class={`absolute top-[${y}] left-[${x}] w-[4%] h-auto aspect-square rounded-full ${statusColors[status as keyof typeof statusColors]} opacity-50 hover:opacity-80`}
+            style={{
+              top: y,
+              left: x
+            }}
+          />
+        ))
+      }
+
+      <article
+        class='absolute bottom-8 left-8 bg-primary-coral rounded-lg p-4 text-white'
+      >
+        <h3>Inventario</h3>
+        <h4>Reservado</h4>
+        <p>10 Unidades</p>
+      </article>
+    </div>
+  </div>
+</Section>

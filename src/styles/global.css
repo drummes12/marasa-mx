@@ -8,4 +8,13 @@
   --color-secondary-blue: #80ACBE;
   --color-secondary-blue-light: #81ADBE;
   --color-secondary-green: #29401C;
+
+  --color-available: #2c9c9e;
+  --color-reserved: #d69058;
+  --color-sold: #d8354b;
+}
+
+body {
+  font-family: var(--font-display);
+  overflow-x: hidden;
 }
