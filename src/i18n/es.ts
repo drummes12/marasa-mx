@@ -39,5 +39,16 @@ export default {
   'commons-areas.items.administration-office.title':
     'Oficina de administración',
   'commons-areas.items.administration-office.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.'
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+  'inventory.section': 'Inventario',
+  'inventory.title': 'Conoce tu nuevo hogar',
+  'inventory.available': 'Disponible',
+  'inventory.reserved': 'Reservado',
+  'inventory.sold': 'Vendido',
+  'inventory.beedrooms': 'Recámaras',
+  'inventory.size': 'm2 desde',
+  'inventory.price': '$ desde',
+  'inventory.coral-model': 'Modelo Coral',
+  'inventory.snail-model': 'Modelo Caracol',
+  'inventory.plus-model': 'Unidad Plus'
 }

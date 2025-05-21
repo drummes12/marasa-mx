@@ -37,5 +37,16 @@ export default {
     'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
   'commons-areas.items.administration-office.title': 'Administration office',
   'commons-areas.items.administration-office.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.'
+    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
+  'inventory.section': 'Inventory',
+  'inventory.title': 'Meet your new home',
+  'inventory.available': 'Available',
+  'inventory.reserved': 'Reserved',
+  'inventory.sold': 'Sold',
+  'inventory.beedrooms': 'Bedrooms',
+  'inventory.size': 'm2 since',
+  'inventory.price': '$ since',
+  'inventory.coral-model': 'Coral Model',
+  'inventory.snail-model': 'Snail Model',
+  'inventory.plus-model': 'Plus Unit'
 }
