@@ -80,18 +80,19 @@ const t = useTranslations(lang)
           }
         </div>
       </div>
+
       <article
         id='information'
-        class='hidden flex-col absolute bottom-4 left-4 rounded-lg p-3 border-1 border-white/60 text-white uppercase bg-primary-coral shadow-md tracking-wider transition-all'
+        class='hidden flex-col absolute bottom-4 left-4 rounded-lg p-3 border-1 text-primary-coral uppercase bg-white shadow-lg tracking-wider transition-all'
       >
         <h3 id='modelo' class='text-xl font-semibold leading-none'>
           {t(`inventory.coral-model`)}
         </h3>
-        <small id='status' class='text-sm text-white/80'
+        <small id='status' class='text-sm opacity-80'
           >{t('inventory.available')}</small
         >
 
-        <div class='w-full h-[1px] my-2 bg-white'></div>
+        <div class='w-full h-[1px] my-2 bg-primary-coral'></div>
 
         <div
           class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide text-lg [&>h4]:font-normal'
@@ -132,6 +133,8 @@ const t = useTranslations(lang)
 
     data.addEventListener('mouseover', () => {
       information?.classList.replace('hidden', 'show-information')
+      information?.classList.remove('available', 'reserved', 'sold')
+      information?.classList.add(status)
       if (statusElement)
         statusElement.textContent = t(`inventory.${status as keyof typeof t}`)
       if (bedroomsElement) bedroomsElement.textContent = bedrooms
@@ -152,8 +155,30 @@ const t = useTranslations(lang)
 
 <style>
   .show-information {
-    opactity: 1;
+    opacity: 1;
     display: flex;
+    border: 1px solid;
+
+    &.available {
+      border-color: var(--color-available);
+      --tw-shadow-color: color-mix(
+        in srgb,
+        var(--color-available) 40%,
+        transparent
+      );
+    }
+    &.reserved {
+      border-color: var(--color-reserved);
+      --tw-shadow-color: color-mix(
+        in srgb,
+        var(--color-reserved) 40%,
+        transparent
+      );
+    }
+    &.sold {
+      border-color: var(--color-sold);
+      --tw-shadow-color: color-mix(in srgb, var(--color-sold) 40%, transparent);
+    }
 
     @media (max-width: 768px) {
       display: none;
