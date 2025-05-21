@@ -63,7 +63,7 @@ const t = useTranslations(lang)
           {
             inventoryData.map(({ id, x, y, ...info }) => (
               <div
-                class={`absolute w-[5%] h-auto py-0.5 md:py-1 rounded-full ${statusColors[info.status as keyof typeof statusColors]} opacity-80 md:opacity-80 md:scale-100 md:border-0 transition text-white flex justify-center items-center`}
+                class={`absolute w-[5%] h-auto py-0.5 md:py-1 rounded-full ${statusColors[info.status as keyof typeof statusColors]} opacity-80 md:opacity-80 md:scale-100 md:border-0 transition text-white flex justify-center items-center cursor-crosshair`}
                 style={{
                   top: y,
                   left: x
@@ -72,7 +72,7 @@ const t = useTranslations(lang)
                 data-info={JSON.stringify(info)}
                 data-lang={lang}
               >
-                <small class='font-bold leading-none text-[0.5rem] sm:text-xs md:text-xl xl:text-2xl'>
+                <small class='font-bold leading-none text-[0.5rem] sm:text-xs md:text-xl xl:text-2xl select-none'>
                   {id}
                 </small>
               </div>
@@ -85,12 +85,18 @@ const t = useTranslations(lang)
         id='information'
         class='hidden flex-col absolute bottom-4 left-4 rounded-lg p-3 border-1 text-primary-coral uppercase bg-white shadow-lg tracking-wider transition-all'
       >
-        <h3 id='modelo' class='text-xl font-semibold leading-none'>
-          {t(`inventory.coral-model`)}
-        </h3>
-        <small id='status' class='text-sm opacity-80'
-          >{t('inventory.available')}</small
-        >
+        <div class='flex flex-row justify-between items-start'>
+          <div class='flex flex-col'>
+            <h3 id='modelo' class='text-xl font-semibold leading-none'>
+              {t(`inventory.coral-model`)}
+            </h3>
+            <small id='status' class='text-sm opacity-80 text-secondary-blue'
+              >{t('inventory.available')}</small
+            >
+          </div>
+
+          <p id='id' class='text-4xl font-bold leading-none'>101</p>
+        </div>
 
         <div class='w-full h-[1px] my-2 bg-primary-coral'></div>
 
@@ -119,12 +125,14 @@ const t = useTranslations(lang)
   const inventoryData = document.querySelectorAll('[data-info]')
   const information = document.querySelector('article#information')
 
+  const idElement = information?.querySelector('#id')
   const statusElement = information?.querySelector('#status')
   const bedroomsElement = information?.querySelector('#bedrooms')
   const sizeElement = information?.querySelector('#size')
   const priceElement = information?.querySelector('#price')
 
   inventoryData.forEach((data) => {
+    const id = (data as HTMLElement).dataset.id ?? ''
     const { status, bedrooms, size, price } = JSON.parse(
       (data as HTMLElement).dataset.info || '{}'
     )
@@ -137,6 +145,7 @@ const t = useTranslations(lang)
       information?.classList.add(status)
       if (statusElement)
         statusElement.textContent = t(`inventory.${status as keyof typeof t}`)
+      if (idElement) idElement.textContent = id
       if (bedroomsElement) bedroomsElement.textContent = bedrooms
       if (sizeElement) sizeElement.textContent = size
       if (priceElement) priceElement.textContent = price
