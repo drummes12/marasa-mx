@@ -43,7 +43,7 @@ export default {
   'inventory.available': 'Available',
   'inventory.reserved': 'Reserved',
   'inventory.sold': 'Sold',
-  'inventory.beedrooms': 'Bedrooms',
+  'inventory.bedrooms': 'Bedrooms',
   'inventory.size': 'm2 since',
   'inventory.price': '$ since',
   'inventory.coral-model': 'Coral Model',

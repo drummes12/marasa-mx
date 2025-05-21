@@ -3,33 +3,8 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import Section from './section.astro'
 
 import inventory from '@/assets/inventory.png'
-
-const inventoryData = [
-  // First row
-  { id: 101, x: '25.5%', y: '34%', status: 'available' },
-  { id: 102, x: '30%', y: '37.5%', status: 'reserved' },
-  { id: 103, x: '34.5%', y: '41.5%', status: 'sold' },
-  { id: 104, x: '39.5%', y: '45.5%', status: 'sold' },
-  { id: 105, x: '44.5%', y: '49.5%', status: 'sold' },
-
-  // Second row
-  { id: 106, x: '62%', y: '65%', status: 'reserved' },
-  { id: 107, x: '66%', y: '61%', status: 'sold' },
-  { id: 108, x: '67.5%', y: '52.5%', status: 'available' },
-  { id: 109, x: '71.5%', y: '49%', status: 'reserved' },
-  { id: 110, x: '72.5%', y: '41%', status: 'available' },
-  { id: 111, x: '76.5%', y: '38%', status: 'available' },
-  { id: 112, x: '77%', y: '30%', status: 'available' },
-  { id: 113, x: '81%', y: '25.5%', status: 'reserved' },
-
-  // Third row
-  { id: 114, x: '46%', y: '26.5%', status: 'available' },
-  { id: 115, x: '40.3%', y: '24.5%', status: 'available' },
-  { id: 116, x: '34.5%', y: '22.5%', status: 'available' },
-  { id: 117, x: '29.2%', y: '21%', status: 'available' },
-  { id: 118, x: '23.7%', y: '19%', status: 'available' },
-  { id: 119, x: '18.5%', y: '18%', status: 'available' }
-]
+import InventoryMobile from './inventory-mobile.astro'
+import { inventoryData } from '@/consts/inventory'
 
 const statusColors = {
   available: 'bg-available',
@@ -88,7 +63,7 @@ const t = useTranslations(lang)
           {
             inventoryData.map(({ id, x, y, ...info }) => (
               <div
-                class={`absolute top-[${y}] left-[${x}] w-[4%] h-auto aspect-square rounded-full ${statusColors[info.status as keyof typeof statusColors]} opacity-60 md:opacity-60 md:scale-100 md:hover:opacity-80 md:hover:scale-110 transition`}
+                class={`absolute w-[5%] h-auto py-0.5 md:py-1 rounded-full ${statusColors[info.status as keyof typeof statusColors]} opacity-80 md:opacity-80 md:scale-100 md:border-0 transition text-white flex justify-center items-center`}
                 style={{
                   top: y,
                   left: x
@@ -96,7 +71,11 @@ const t = useTranslations(lang)
                 data-id={id}
                 data-info={JSON.stringify(info)}
                 data-lang={lang}
-              />
+              >
+                <small class='font-bold leading-none text-[0.5rem] sm:text-xs md:text-xl xl:text-2xl'>
+                  {id}
+                </small>
+              </div>
             ))
           }
         </div>
@@ -117,7 +96,7 @@ const t = useTranslations(lang)
         <div
           class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide text-lg [&>h4]:font-normal'
         >
-          <h4>{t('inventory.beedrooms')}</h4>
+          <h4>{t('inventory.bedrooms')}</h4>
           <p id='bedrooms'>3</p>
 
           <h4>{t('inventory.size')}</h4>
@@ -128,6 +107,8 @@ const t = useTranslations(lang)
         </div>
       </article>
     </div>
+
+    <InventoryMobile />
   </Section>
 </div>
 
@@ -158,11 +139,13 @@ const t = useTranslations(lang)
       if (priceElement) priceElement.textContent = price
 
       inventoryData.forEach((data) => {
-        data.classList.replace('md:opacity-100', 'md:opacity-60')
+        data.classList.replace('md:opacity-100', 'md:opacity-80')
         data.classList.replace('md:scale-110', 'md:scale-100')
+        data.classList.replace('md:border-2', 'md:border-0')
       })
-      data.classList.replace('md:opacity-60', 'md:opacity-100')
+      data.classList.replace('md:opacity-80', 'md:opacity-100')
       data.classList.replace('md:scale-100', 'md:scale-110')
+      data.classList.replace('md:border-0', 'md:border-2')
     })
   })
 </script>

@@ -45,7 +45,7 @@ export default {
   'inventory.available': 'Disponible',
   'inventory.reserved': 'Reservado',
   'inventory.sold': 'Vendido',
-  'inventory.beedrooms': 'Recámaras',
+  'inventory.bedrooms': 'Recámaras',
   'inventory.size': 'm2 desde',
   'inventory.price': '$ desde',
   'inventory.coral-model': 'Modelo Coral',

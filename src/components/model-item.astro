@@ -1,0 +1,74 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import CaretRight from './icons/caret-right.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+export interface Props {
+  model: 'coral-model' | 'snail-model' | 'plus-model'
+  size: string
+  price: string
+  bedrooms: string
+}
+
+const { model, size, price, bedrooms } = Astro.props
+---
+
+<details
+  open
+  name='model-information'
+  class='flex-col rounded-lg p-3 border-1 border-white/60 text-white uppercase bg-primary-coral shadow-md tracking-wider'
+>
+  <summary class='flex flex-row justify-between items-center group'>
+    <h3 id='modelo' class='text-xl font-semibold leading-none'>
+      {t(`inventory.${model}`)}
+    </h3>
+    <CaretRight class='size-4 transition' />
+  </summary>
+
+  <article>
+    <div class='w-full h-[1px] my-2 bg-white'></div>
+
+    <div
+      class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide text-lg [&>h4]:font-normal'
+    >
+      <h4>{t('inventory.bedrooms')}</h4>
+      <p id='bedrooms'>{bedrooms}</p>
+
+      <h4>{t('inventory.size')}</h4>
+      <p id='size'>{size}</p>
+
+      <h4>{t('inventory.price')}</h4>
+      <p id='price'>{price}</p>
+    </div>
+  </article>
+</details>
+
+<style>
+  details {
+    overflow: hidden;
+
+    & summary::-webkit-details-marker {
+      display: none;
+    }
+
+    & summary {
+      position: relative;
+      list-style: none;
+      [open] & svg {
+        rotate: 90deg;
+      }
+    }
+  }
+
+  article {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  details[open] article {
+    max-height: 500px;
+    transition: max-height 0.3s ease;
+  }
+</style>
