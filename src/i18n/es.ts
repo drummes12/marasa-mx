@@ -50,5 +50,10 @@ export default {
   'inventory.price': '$ desde',
   'inventory.coral-model': 'Modelo Coral',
   'inventory.snail-model': 'Modelo Caracol',
-  'inventory.plus-model': 'Unidad Plus'
+  'inventory.plus-model': 'Unidad Plus',
+  'gallery.section': 'Visita nuestra',
+  'gallery.title': 'Galería',
+  'gallery.button.all': 'Todo',
+  'gallery.button.amenities': 'Amenidades',
+  'gallery.button.commons-areas': 'Áreas comunes'
 }

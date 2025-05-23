@@ -1,0 +1,127 @@
+---
+import Section from './section.astro'
+import { imagesgallery } from '@/consts/images'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Section class='flex flex-col items-center justify-start min-h-screen'>
+  <div class='px-8 md:px-24 py-20 w-full'>
+    <heading
+      class='uppercase text-center mb-8 h-fit flex flex-col items-center gap-8'
+    >
+      <h2 class='text-lg sm:text-xl tracking-[1rem] text-primary-coral'>
+        Visita nuestra
+      </h2>
+      <h1
+        class='text-3xl sm:text-5xl tracking-[1rem] font-semibold leading-tight text-primary-blue'
+      >
+        Galería
+      </h1>
+    </heading>
+
+    <div
+      id='gallery-buttons'
+      class='w-full flex flex-row flex-wrap items-center justify-around tracking-widest font-normal border-b-1 border-primary-blue/40'
+    >
+      <button id='all'>Todo</button>
+      <button id='amenities'>Amenidades</button>
+      <button id='commons-areas'>Áreas comunes</button>
+    </div>
+
+    <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}></div>
+  </div>
+</Section>
+
+<script>
+  import { imagesgallery as ImagesgalleryType } from '@/consts/images.ts'
+
+  const buttons = document.querySelectorAll('#gallery-buttons button')
+  const galleryImages = document.querySelector('#gallery-images')
+  const imagesgallery: typeof ImagesgalleryType = JSON.parse(
+    (galleryImages as HTMLElement).dataset.images || '[]'
+  )
+
+  loadImages()
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const target = e.target as HTMLButtonElement
+      const tag = target.id
+      loadImages(tag)
+    })
+  })
+
+  function loadImages(tag = 'all') {
+    if (!galleryImages) return
+
+    galleryImages.classList.add('animating')
+
+    setTimeout(() => {
+      galleryImages.innerHTML = ''
+      imagesgallery.forEach((image) => {
+        if (tag === 'all' || image.tags.includes(tag)) {
+          const img = document.createElement('img')
+          img.src = image.src
+          img.alt = image.alt
+          galleryImages.appendChild(img)
+        }
+      })
+
+      galleryImages.classList.remove('animating')
+    }, 300)
+  }
+</script>
+
+<style>
+  #gallery-buttons {
+    button {
+      min-width: min-content;
+      flex: 1;
+      text-transform: uppercase;
+      color: var(--color-primary-blue);
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      min-width: 250px;
+
+      &:hover {
+        background-color: var(--color-primary-blue);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  #gallery-images {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: auto;
+    gap: 1rem;
+    margin-top: 4rem;
+    max-width: 100%;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+  }
+
+  #gallery-images.animating {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+</style>

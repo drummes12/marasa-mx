@@ -45,3 +45,36 @@ export const imagesLifeStyle = {
   src: 'https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg',
   alt: 'Imagen de estilo de vida'
 }
+
+export const imagesgallery = [
+  {
+    src: 'https://images.pexels.com/photos/2049422/pexels-photo-2049422.jpeg',
+    alt: 'Imagen de galería 1',
+    tags: ['amenities']
+  },
+  {
+    src: 'https://images.pexels.com/photos/17832446/pexels-photo-17832446.jpeg',
+    alt: 'Imagen de galería 2',
+    tags: ['amenities']
+  },
+  {
+    src: 'https://images.pexels.com/photos/16105790/pexels-photo-16105790.jpeg',
+    alt: 'Imagen de galería 3',
+    tags: ['amenities']
+  },
+  {
+    src: 'https://images.pexels.com/photos/31837575/pexels-photo-31837575.jpeg',
+    alt: 'Imagen de galería 4',
+    tags: ['commons-areas']
+  },
+  {
+    src: 'https://images.pexels.com/photos/32195239/pexels-photo-32195239.jpeg',
+    alt: 'Imagen de galería 5',
+    tags: ['commons-areas']
+  },
+  {
+    src: 'https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg',
+    alt: 'Imagen de galería 6',
+    tags: ['commons-areas']
+  }
+]

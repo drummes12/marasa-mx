@@ -48,5 +48,10 @@ export default {
   'inventory.price': '$ since',
   'inventory.coral-model': 'Coral Model',
   'inventory.snail-model': 'Snail Model',
-  'inventory.plus-model': 'Plus Unit'
+  'inventory.plus-model': 'Plus Unit',
+  'gallery.section': 'Visit our',
+  'gallery.title': 'Gallery',
+  'gallery.button.all': 'All',
+  'gallery.button.amenities': 'Amenities',
+  'gallery.button.commons-areas': 'Commons Areas'
 }
