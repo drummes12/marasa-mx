@@ -1,0 +1,63 @@
+---
+import logo from '@/assets/logo-blanco.svg'
+import FacebookIcon from '@/components/icons/facebook.astro'
+import InstagramIcon from '@/components/icons/instagram.astro'
+---
+
+<footer class='w-full h-fit'>
+  <div
+    class='relative bg-primary-blue text-white py-12 px-8 flex flex-col gap-2 items-center justify-center text-lg font-extralight tracking-wider text-center'
+  >
+    <div class='bg-footer'></div>
+    <img
+      id='background'
+      src={logo.src}
+      alt='Logo de Marasa'
+      class='h-32 mb-8'
+    />
+    <p>Av. Paseo del Marlin 87, Las Gaviotas, 48328 Puerto Vallarta, Jal.</p>
+    <p>&copy;2025 Marasa. Todos los derechos reservados</p>
+  </div>
+
+  <div
+    class='w-full h-fit bg-primary-coral text-primary-blue flex flex-row flex-wrap items-center justify-center sm:justify-between py-2 px-8'
+  >
+    <div class='flex flex-col sm:flex-row gap-4 [&>a]:hover:underline'>
+      <a class='text-md font-extralight tracking-[0.2rem] uppercase' href='#'
+        >Aviso de privacidad</a
+      >
+      <div>&bull;</div>
+      <a class='text-md font-extralight tracking-[0.2rem] uppercase' href='#'
+        >Términos y Condiciones</a
+      >
+    </div>
+
+    <div class='flex flex-row gap-4 [&>a]:hover:scale-110'>
+      <a
+        class='font-extralight tracking-[0.2rem] uppercase transition-all'
+        href='#'
+      >
+        <FacebookIcon class='size-8' />
+      </a>
+      <a
+        class='font-extralight tracking-[0.2rem] uppercase transition-all'
+        href='#'
+      >
+        <InstagramIcon class='size-8' />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .bg-footer {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.03;
+    background-image: url('/favicon.png');
+    background-size: 60px;
+    background-position: top center;
+  }
+</style>
