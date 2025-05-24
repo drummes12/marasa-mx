@@ -53,5 +53,9 @@ export default {
   'gallery.title': 'Gallery',
   'gallery.button.all': 'All',
   'gallery.button.amenities': 'Amenities',
-  'gallery.button.commons-areas': 'Commons Areas'
+  'gallery.button.commons-areas': 'Commons Areas',
+  'quote.title': 'Quote with us',
+  'quote.paragraph':
+    'Communicate with us to get more information about this project.',
+  'quote.button': 'Quote here'
 }

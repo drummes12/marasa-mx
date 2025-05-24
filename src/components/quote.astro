@@ -1,0 +1,31 @@
+---
+import Mail from './icons/mail.astro'
+import Section from './section.astro'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Section
+  id='gallery'
+  class='flex flex-col items-center justify-center px-8 md:px-24 pb-14'
+>
+  <article
+    class='bg-primary-coral/10 text-primary-blue px-8 py-12 rounded-lg flex flex-col items-center justify-center text-center gap-8'
+  >
+    <Mail class='size-14 stroke-1' />
+    <h1 class='text-2xl sm:text-4xl tracking-[0.5rem] uppercase font-semibold'>
+      {t('quote.title')}
+    </h1>
+    <p class='text-lg sm:text-xl tracking-wider font-light'>
+      {t('quote.paragraph')}
+    </p>
+    <a
+      class='px-10 py-5 bg-primary-coral text-white uppercase rounded-md text-lg tracking-widest cursor-pointer hover:contrast-125 hover:scale-105 transition duration-300'
+      href='#'
+    >
+      {t('quote.button')}
+    </a>
+  </article>
+</Section>

@@ -103,7 +103,7 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
   <div class='absolute bottom-4 md:bottom-8 w-full justify-center'>
     <ul
       id={`${title}-carousel-indicators`}
-      class='flex-row items-center justify-center gap-8 hidden'
+      class='flex-row items-center justify-center gap-4 sm:gap-8 hidden'
     >
       {
         Array.from({ length: images.length }).map((_, index) => (

@@ -55,5 +55,9 @@ export default {
   'gallery.title': 'Galería',
   'gallery.button.all': 'Todo',
   'gallery.button.amenities': 'Amenidades',
-  'gallery.button.commons-areas': 'Áreas comunes'
+  'gallery.button.commons-areas': 'Áreas comunes',
+  'quote.title': 'Cotiza con nosotros',
+  'quote.paragraph':
+    'Comunicate con nosotros para obtener más información sobre este proyecto.',
+  'quote.button': 'Cotiza aquí'
 }
