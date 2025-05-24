@@ -15,6 +15,6 @@ export default defineConfig({
     defaultLocale: 'es',
     locales: ['es', 'en']
   },
-  output: 'server',
+  output: 'static',
   adapter: vercel()
 })
