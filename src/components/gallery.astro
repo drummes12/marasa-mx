@@ -2,12 +2,16 @@
 import Section from './section.astro'
 import { imagesgallery } from '@/consts/images'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import Carousel from './carousel.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Section class='flex flex-col items-center justify-start min-h-screen'>
+<Section
+  id='gallery'
+  class='flex flex-col items-center justify-start min-h-screen'
+>
   <div class='px-8 md:px-24 py-20 w-full'>
     <heading
       class='uppercase text-center mb-8 h-fit flex flex-col items-center gap-8'
@@ -32,50 +36,134 @@ const t = useTranslations(lang)
     </div>
 
     <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}></div>
+
+    <dialog
+      id='gallery-all-dialog'
+      class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8'
+    >
+      <Carousel
+        title='gallery-all'
+        images={imagesgallery}
+        buttonsColor='var(--color-primary-blue)'
+        class='rounded-2xl'
+        hasButtonsDegraded='[&>div]:!to-white opacity-30'
+        hasIndicatorsDegraded='[&>div]:!to-white'
+      />
+    </dialog>
+
+    {
+      Array.from(new Set(imagesgallery.flatMap((img) => img.tags))).map(
+        (tag) => {
+          const tagImages = imagesgallery.filter((img) =>
+            img.tags.includes(tag)
+          )
+          return (
+            <dialog
+              id={`gallery-${tag}-dialog`}
+              class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8'
+            >
+              <Carousel
+                title={`gallery-${tag}`}
+                images={tagImages}
+                buttonsColor='var(--color-primary-blue)'
+                class='rounded-2xl'
+                hasButtonsDegraded='[&>div]:!to-white opacity-30'
+                hasIndicatorsDegraded='[&>div]:!to-white'
+              />
+            </dialog>
+          )
+        }
+      )
+    }
   </div>
 </Section>
 
 <script>
   import { imagesgallery as ImagesgalleryType } from '@/consts/images.ts'
 
-  const buttons = document.querySelectorAll('#gallery-buttons button')
-  const galleryImages = document.querySelector('#gallery-images')
+  const $html = document.querySelector('html') as HTMLHtmlElement
+  const $buttons = document.querySelectorAll(
+    '#gallery-buttons button'
+  ) as NodeListOf<HTMLButtonElement>
+  const $galleryImages = document.querySelector(
+    '#gallery-images'
+  ) as HTMLElement
+
   const imagesgallery: typeof ImagesgalleryType = JSON.parse(
-    (galleryImages as HTMLElement).dataset.images || '[]'
+    ($galleryImages as HTMLElement).dataset.images || '[]'
   )
+
+  let currentTag = 'all'
 
   loadImages()
 
-  buttons.forEach((button) => {
+  $buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
       const target = e.target as HTMLButtonElement
       const tag = target.id
+      currentTag = tag
       loadImages(tag)
     })
   })
 
-  function loadImages(tag = 'all') {
-    if (!galleryImages) return
+  function getDialog(tag: string): HTMLDialogElement | null {
+    const dialog = document.querySelector(
+      `#gallery-${tag}-dialog`
+    ) as HTMLDialogElement
+    return (
+      dialog ||
+      (document.querySelector('#gallery-dialog-all') as HTMLDialogElement)
+    )
+  }
 
-    galleryImages.classList.add('animating')
+  function loadImages(tag = 'all') {
+    if (!$galleryImages) return
+
+    $galleryImages.classList.add('animating')
 
     setTimeout(() => {
-      galleryImages.innerHTML = ''
+      $galleryImages.innerHTML = ''
       imagesgallery.forEach((image) => {
         if (tag === 'all' || image.tags.includes(tag)) {
-          const img = document.createElement('img')
-          img.src = image.src
-          img.alt = image.alt
-          galleryImages.appendChild(img)
+          const btn = document.createElement('button')
+          btn.style.backgroundImage = `url(${image.src})`
+          btn.addEventListener('click', onClickImage)
+          $galleryImages.appendChild(btn)
         }
       })
 
-      galleryImages.classList.remove('animating')
+      $galleryImages.classList.remove('animating')
     }, 300)
+  }
+
+  function onClickImage(e: Event) {
+    const target = e.target as HTMLButtonElement
+    if (!$galleryImages) return
+
+    const index = Array.from($galleryImages.children).indexOf(target)
+    if (index !== -1) {
+      const event = new CustomEvent('carousel:update-index', {
+        detail: { index, carouselId: `#gallery-${currentTag}-dialog` }
+      })
+      window.dispatchEvent(event)
+
+      const dialog = getDialog(currentTag)
+      if (dialog) {
+        dialog.showModal()
+        dialog.addEventListener('mousedown', (e) => {
+          if (e.target === dialog) dialog.close()
+        })
+        dialog.addEventListener('close', () => {
+          $html.classList.remove('overflow-hidden')
+        })
+
+        $html.classList.add('overflow-hidden')
+      }
+    }
   }
 </script>
 
-<style>
+<style is:global>
   #gallery-buttons {
     button {
       min-width: min-content;
@@ -112,16 +200,72 @@ const t = useTranslations(lang)
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
       aspect-ratio: 4/3;
+      overflow: hidden;
+      cursor: pointer;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      bacgkouund-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
     }
   }
 
   #gallery-images.animating {
     opacity: 0;
     transform: scale(0.95);
+  }
+
+  #gallery dialog {
+    opacity: 0;
+    transform: translateY(-500%) scale(0);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out,
+      overlay 1s ease-out allow-discrete,
+      display 1s ease-out allow-discrete;
+  }
+
+  #gallery dialog[open] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @starting-style {
+    #gallery dialog[open] {
+      opacity: 0;
+      transform: translateY(-500%) scale(0);
+    }
+  }
+
+  #gallery dialog::backdrop {
+    background-color: transparent;
+    transition:
+      display 1s allow-discrete,
+      overlay 1s allow-discrete,
+      background-color 1s;
+  }
+
+  #gallery dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+
+  @starting-style {
+    #gallery dialog[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
   }
 </style>

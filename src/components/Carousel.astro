@@ -11,6 +11,9 @@ export interface Props {
   classWrapper?: string
   buttonsColor?: string
   autoPlay?: boolean
+  initialIndex?: number
+  hasIndicatorsDegraded?: boolean | string
+  hasButtonsDegraded?: boolean | string
 }
 
 const {
@@ -19,7 +22,10 @@ const {
   title: titleProp,
   classWrapper,
   buttonsColor = '#fff',
-  autoPlay = false
+  autoPlay = false,
+  initialIndex = 0,
+  hasIndicatorsDegraded = false,
+  hasButtonsDegraded = false
 } = Astro.props
 
 const title = titleProp.toLowerCase().replace(/\s+/g, '-')
@@ -31,6 +37,7 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
   data-images={JSON.stringify(images)}
   data-title={title}
   data-auto-play={autoPlay}
+  data-initial-index={initialIndex}
 >
   <div
     id={`${title}-carousel-wrapper`}
@@ -45,10 +52,34 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
       ))
     }
   </div>
+  {
+    hasIndicatorsDegraded && (
+      <div
+        class:list={[
+          hasIndicatorsDegraded,
+          'absolute left-0 top-0 w-full h-full pointer-events-none'
+        ]}
+      >
+        <div class='absolute left-0 bottom-0 w-full h-1/5 bg-gradient-to-b from-transparent to-black' />
+      </div>
+    )
+  }
+  {
+    hasButtonsDegraded && (
+      <div
+        class:list={[
+          hasButtonsDegraded,
+          'absolute left-0 top-0 w-full h-full pointer-events-none'
+        ]}
+      >
+        <div class='absolute left-0 top-0 h-full w-1/10 bg-gradient-to-l from-transparent to-black' />
+        <div class='absolute right-0 top-0 h-full w-1/10 bg-gradient-to-r from-transparent to-black' />
+      </div>
+    )
+  }
 
   <button
     id={`${title}-carousel-prev`}
-    {title}
     class='absolute left-4 top-0 bottom-0 cursor-pointer hidden'
     aria-label={`Imagen de ${title} anterior`}
   >
@@ -76,10 +107,10 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     >
       {
         Array.from({ length: images.length }).map((_, index) => (
-          <li class='size-4 md:size-8 flex justify-center items-center'>
+          <li class='size-4 flex justify-center items-center'>
             <button
               data-index={index}
-              class='size-2 md:size-4 opacity-50 rounded-full hover:size-4 md:hover:size-8 hover:opacity-90 transition-all cursor-pointer'
+              class='size-4 opacity-50 scale-80 rounded-full hover:size-4 md:hover:scale-110 hover:opacity-90 transition-all cursor-pointer'
               aria-label={`Imagen de ${title} ${index + 1}`}
               style={`background-color: ${buttonsColor}`}
             />

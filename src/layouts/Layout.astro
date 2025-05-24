@@ -59,6 +59,12 @@ const t = useTranslations(lang)
       }
     }
 
+    window.addEventListener('carousel:update-index', (e) => {
+      const { index, carouselId } = e.detail
+      currentIndex = index
+      updateCarouselSlide(currentIndex, carouselId)
+    })
+
     carouselPrev?.addEventListener('click', () => {
       const newIndex = (currentIndex - 1 + total) % total
       updateCarouselSlide(newIndex)
@@ -105,15 +111,21 @@ const t = useTranslations(lang)
 
     resetInterval()
 
-    function updateCarouselSlide(index) {
-      if (!carouselWrapper) return
+    function updateCarouselSlide(index, carouselId) {
+      const updatedCarouselWrapper = carouselId
+        ? document.querySelector(`${carouselId} div`)
+        : carouselWrapper
+
+      if (!updatedCarouselWrapper) return
       currentIndex = index
       const translateX = -index * 100
-      carouselWrapper.style.transform = `translateX(${translateX}%)`
+      updatedCarouselWrapper.style.transform = `translateX(${translateX}%)`
 
       carouselIndicators.forEach((btn, i) => {
         btn.classList.toggle('opacity-90', i === index)
+        btn.classList.toggle('scale-120', i === index)
         btn.classList.toggle('opacity-50', i !== index)
+        btn.classList.toggle('scale-80', i !== index)
       })
     }
 
