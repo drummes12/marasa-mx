@@ -2,7 +2,7 @@
 import Section from '@/components/section.astro'
 import { imagesgallery } from '@/consts/images'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
-import Carousel from './carousel.astro'
+import Carousel from '@/components/carousel.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
