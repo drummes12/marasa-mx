@@ -2,9 +2,9 @@
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import Section from '@/components/section.astro'
 
-import inventory from '@/assets/inventory.png'
 import InventoryMobile from './inventory-mobile.astro'
 import { inventoryData } from '@/consts/inventory'
+import { imagesInventory } from '@/consts/images.ts'
 
 const statusColors = {
   available: 'bg-available',
@@ -58,7 +58,11 @@ const t = useTranslations(lang)
       </div>
 
       <div class='relative w-full h-fit'>
-        <img src={inventory.src} alt='Inventario' class='bg-primary-coral' />
+        <img
+          src={imagesInventory.src}
+          alt={imagesInventory.alt}
+          class='bg-primary-coral'
+        />
         <div class='absolute inset-0 w-full h-full'>
           {
             inventoryData.map(({ id, x, y, ...info }) => (
