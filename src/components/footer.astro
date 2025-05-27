@@ -19,32 +19,38 @@ import InstagramIcon from '@/components/icons/instagram.astro'
     <p>&copy;2025 Marasa. Todos los derechos reservados</p>
   </div>
 
-  <div
-    class='w-full h-fit bg-primary-coral text-primary-blue flex flex-row flex-wrap items-center justify-center sm:justify-between py-2 px-8'
-  >
-    <div class='flex flex-col sm:flex-row gap-4 [&>a]:hover:underline'>
-      <a class='text-md font-extralight tracking-[0.2rem] uppercase' href='#'
-        >Aviso de privacidad</a
+  <div class='w-full h-fit bg-primary-coral text-primary-blue'>
+    <div
+      class='w-full max-w-[1440px] mx-auto py-8 md:py-2 px-8 md:px-24 flex flex-col justify-center items-center md:flex-row md:flex-wrap md:justify-between gap-x-4 gap-y-8 md:gap-y-2'
+    >
+      <div
+        class='flex flex-col items-center text-center md:text-start md:items-start md:flex-row gap-x-4 gap-y-2 [&>a]:hover:underline'
       >
-      <div>&bull;</div>
-      <a class='text-md font-extralight tracking-[0.2rem] uppercase' href='#'
-        >Términos y Condiciones</a
-      >
-    </div>
+        <a class='text-md font-extralight tracking-[0.2rem] uppercase' href='#'
+          >Aviso de privacidad</a
+        >
+        <div class='hidden md:block'>&bull;</div>
+        <a class='text-md font-extralight tracking-[0.2rem] uppercase' href='#'
+          >Términos y Condiciones</a
+        >
+      </div>
 
-    <div class='flex flex-row gap-4 [&>a]:hover:scale-110'>
-      <a
-        class='font-extralight tracking-[0.2rem] uppercase transition-all'
-        href='#'
-      >
-        <FacebookIcon class='size-8' />
-      </a>
-      <a
-        class='font-extralight tracking-[0.2rem] uppercase transition-all'
-        href='#'
-      >
-        <InstagramIcon class='size-8' />
-      </a>
+      <div class='md:hidden w-full h-[0.1rem] bg-primary-blue'></div>
+
+      <div class='flex flex-row gap-4 [&>a]:hover:scale-110'>
+        <a
+          class='font-extralight tracking-[0.2rem] uppercase transition-all'
+          href='#'
+        >
+          <FacebookIcon class='size-8' />
+        </a>
+        <a
+          class='font-extralight tracking-[0.2rem] uppercase transition-all'
+          href='#'
+        >
+          <InstagramIcon class='size-8' />
+        </a>
+      </div>
     </div>
   </div>
 </footer>
