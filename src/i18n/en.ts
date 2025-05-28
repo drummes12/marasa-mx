@@ -46,6 +46,7 @@ export default {
   'inventory.bedrooms': 'Bedrooms',
   'inventory.size': 'm2 since',
   'inventory.price': '$ since',
+  'inventory.image': 'Model front',
   'inventory.coral-model': 'Coral Model',
   'inventory.snail-model': 'Snail Model',
   'inventory.plus-model': 'Plus Unit',

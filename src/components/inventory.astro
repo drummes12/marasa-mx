@@ -17,7 +17,10 @@ const t = useTranslations(lang)
 ---
 
 <div class='bg-primary-coral'>
-  <Section id='inventory' class='relative flex-col py-20 px-4 !bg-transparent'>
+  <Section
+    id='inventory'
+    class='relative flex-col py-20 pb-32 px-4 !bg-transparent'
+  >
     <heading
       class='uppercase text-center h-fit flex flex-col items-center gap-2 text-white'
     >
@@ -87,34 +90,45 @@ const t = useTranslations(lang)
 
       <article
         id='information'
-        class='hidden flex-col absolute bottom-4 left-4 rounded-lg p-3 border-1 text-primary-coral uppercase bg-white shadow-lg tracking-wider transition-all'
+        class='overflow-hidden hidden flex-row justify-center items-center absolute -bottom-24 left-4 rounded-lg border-1 text-primary-coral uppercase bg-white shadow-lg tracking-wider transition-all'
       >
-        <div class='flex flex-row justify-between items-start'>
-          <div class='flex flex-col'>
-            <h3 id='modelo' class='text-xl font-semibold leading-none'>
-              {t(`inventory.coral-model`)}
-            </h3>
-            <small id='status' class='text-sm opacity-80 text-secondary-blue'
-              >{t('inventory.available')}</small
-            >
+        <div class='flex flex-col p-3'>
+          <div class='flex flex-row justify-between items-start'>
+            <div class='flex flex-col'>
+              <h3 id='modelo' class='text-xl font-semibold leading-none'>
+                {t(`inventory.coral-model`)}
+              </h3>
+              <small id='status' class='text-sm opacity-80 text-secondary-blue'
+                >{t('inventory.available')}</small
+              >
+            </div>
+
+            <p id='id' class='text-4xl font-bold leading-none'>101</p>
           </div>
 
-          <p id='id' class='text-4xl font-bold leading-none'>101</p>
+          <div class='w-full h-[1px] my-2 bg-primary-coral'></div>
+
+          <div
+            class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide text-lg [&>h4]:font-normal'
+          >
+            <h4>{t('inventory.bedrooms')}</h4>
+            <p id='bedrooms'>3</p>
+
+            <h4>{t('inventory.size')}</h4>
+            <p id='size'>186.57 m2</p>
+
+            <h4>{t('inventory.price')}</h4>
+            <p id='price'>$2,743,195 (MXN)</p>
+          </div>
         </div>
 
-        <div class='w-full h-[1px] my-2 bg-primary-coral'></div>
-
-        <div
-          class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide text-lg [&>h4]:font-normal'
-        >
-          <h4>{t('inventory.bedrooms')}</h4>
-          <p id='bedrooms'>3</p>
-
-          <h4>{t('inventory.size')}</h4>
-          <p id='size'>186.57 m2</p>
-
-          <h4>{t('inventory.price')}</h4>
-          <p id='price'>$2,743,195 (MXN)</p>
+        <div class='max-h-48 aspect-video'>
+          <img
+            id='model-image'
+            src='/images/gallery/fachada-frontal.webp'
+            alt={t('inventory.image')}
+            class='w-full h-full'
+          />
         </div>
       </article>
     </div>
@@ -134,10 +148,13 @@ const t = useTranslations(lang)
   const bedroomsElement = information?.querySelector('#bedrooms')
   const sizeElement = information?.querySelector('#size')
   const priceElement = information?.querySelector('#price')
+  const modelImageElement = information?.querySelector(
+    '#model-image'
+  ) as HTMLImageElement
 
   inventoryData.forEach((data) => {
     const id = (data as HTMLElement).dataset.id ?? ''
-    const { status, bedrooms, size, price } = JSON.parse(
+    const { status, bedrooms, size, price, image } = JSON.parse(
       (data as HTMLElement).dataset.info || '{}'
     )
     const lang = (data as HTMLElement).dataset.lang as 'en' | 'es'
@@ -153,6 +170,7 @@ const t = useTranslations(lang)
       if (bedroomsElement) bedroomsElement.textContent = bedrooms
       if (sizeElement) sizeElement.textContent = size
       if (priceElement) priceElement.textContent = price
+      if (modelImageElement) modelImageElement.src = image
 
       inventoryData.forEach((data) => {
         data.classList.replace('md:opacity-100', 'md:opacity-80')

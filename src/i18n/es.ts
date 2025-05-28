@@ -55,6 +55,7 @@ export default {
   'inventory.bedrooms': 'Recámaras',
   'inventory.size': 'm2 desde',
   'inventory.price': '$ desde',
+  'inventory.image': 'Fachada del modelo',
   'inventory.coral-model': 'Modelo Coral',
   'inventory.snail-model': 'Modelo Caracol',
   'inventory.plus-model': 'Unidad Plus',
