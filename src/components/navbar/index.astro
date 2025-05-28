@@ -18,7 +18,7 @@ const SECTIONS = [
 ---
 
 <nav id='navbar' class='z-20 bg-primary-blue' aria-hidden='true'>
-  <div class='max-w-[1440px] mx-auto px-8 md:px-24'>
+  <div class='max-w-[1440px] mx-auto'>
     <MenuMobile sections={SECTIONS} />
     <MenuDesktop sections={SECTIONS} />
   </div>
@@ -30,6 +30,12 @@ const SECTIONS = [
     animation-fill-mode: both;
     animation-timeline: scroll();
     animation-range: entry 100% cover 100%;
+
+    @media (max-width: 768px) {
+      animation-range: entry 10% cover 12%;
+      position: sticky;
+      top: 1rem;
+    }
 
     @media (min-width: 1280px) {
       animation-range: entry 10% cover 12%;
@@ -46,12 +52,14 @@ const SECTIONS = [
         transparent
       );
       color: var(--color-secondary-color);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
       min-width: none;
-      margin-inline: auto;
-      border-radius: 2rem;
+      border-radius: 1rem;
       margin-inline: 2rem;
-      box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
+      --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+        0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+        var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
 
@@ -73,11 +81,11 @@ const SECTIONS = [
   }
 
   #navbar #navbar-ubication {
-    animation-range: entry 46% exit 54%;
+    animation-range: entry 46% exit 58%;
   }
 
   #navbar #navbar-commons-areas {
-    animation-range: entry 54% exit 62%;
+    animation-range: entry 58% exit 62%;
   }
 
   #navbar #navbar-inventory {

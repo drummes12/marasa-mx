@@ -1,32 +1,44 @@
 ---
+import CaretRight from '@/components/icons/caret-right.astro'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
 const { sections } = Astro.props
 ---
 
 <button
   id='navbar-hamburger'
-  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-secondary-color rounded-lg p-2 aspect-square bg-primary-color/70
-  hover:scale-105 hover:shadow-md hover:bg-primary-color
-  active:scale-95 active:shadow-inner transition`
+  class=`w-full py-4 group md:hidden transition flex justify-center items-center text-white`
   aria-label='Abrir menú'
 >
-  <span class='-translate-y-0.5'></span>
-  <span class='my-1 opacity-100'></span>
-  <span class='translate-y-0.5'></span>
+  <img
+    src='/favicon.png'
+    alt='Logo de Marasa'
+    class='size-8 transition absolute left-8'
+  />
+  <span
+    id='navbar-hamburger-section'
+    class='font-light uppercase tracking-widest text-center'
+  >
+    {t('navbar.welcome')}
+  </span>
+  <CaretRight class='size-4 transition absolute right-8' />
 </button>
 
 <div
   id='navbar-menu-mobile'
-  class=`z-50 w-full absolute left-0 top-[calc(100%+0.5rem)] h-[calc(100dvh-100%-1.5rem)]
-  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg p-6 -translate-x-[500%] transition rounded-lg flex flex-col justify-between items-center gap-4 overflow-hidden`
+  class=`w-full md:hidden left-0 top-[calc(100%)] h-fit text-white px-8 py-2 -translate-y-[500%] transition border-t-1 border-t-white rounded-b-2xl hidden flex-col justify-between items-center gap-4`
 >
   <ul class='flex flex-col w-full'>
     {
       sections.map(({ title, href }) => (
-        <li
-          id={`navbar-${href.replaceAll('/#', '')}`}
-          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-lg hover:bg-primary-color'
-        >
-          <a class='block w-full px-4 py-4' href={href}>
+        <li id={`navbar-${href.replaceAll('/#', '')}`}>
+          <a
+            class='block w-full px-4 py-4 hover:text-primary-coral'
+            href={href}
+          >
             {title}
           </a>
         </li>
@@ -40,11 +52,36 @@ const { sections } = Astro.props
 
   const html = document.querySelector('html')
   const menu = document.querySelector('#navbar-menu-mobile')
+  const title = document.querySelector('#navbar-hamburger-section')
   const button = document.querySelector('#navbar-hamburger')
-  const line1 = document.querySelector('#navbar-hamburger span:nth-child(1)')
-  const line2 = document.querySelector('#navbar-hamburger span:nth-child(2)')
-  const line3 = document.querySelector('#navbar-hamburger span:nth-child(3)')
+  const svg = document.querySelector('#navbar-hamburger svg')
   const optionsMenu = document.querySelectorAll('#navbar-menu-mobile li')
+
+  const sectionsMap = new Map()
+  document.querySelectorAll('section[id]').forEach((section) => {
+    const key = section.id
+    const li = document.querySelector(`#navbar-${key}`)
+    if (li) {
+      sectionsMap.set(section, li.textContent.trim())
+    }
+  })
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const label = sectionsMap.get(entry.target)
+          if (label) title.textContent = label
+        }
+      })
+    },
+    {
+      rootMargin: '0px 0px -50% 0px', // actúa cuando la sección entra al centro
+      threshold: 0.1
+    }
+  )
+
+  sectionsMap.forEach((_, section) => observer.observe(section))
 
   button?.addEventListener('click', () => {
     mobileMenuOpen = !mobileMenuOpen
@@ -60,49 +97,54 @@ const { sections } = Astro.props
   optionsMenu.forEach((option) => {
     option.addEventListener('click', () => {
       mobileMenuOpen = false
+      title.textContent = option.textContent
       hideMenu()
     })
   })
 
   function showMenu() {
     html?.classList.add('overflow-y-hidden')
-    menu?.classList.remove('-translate-x-[500%]')
-    line1?.classList.add('!rotate-45', '!translate-y-[0.4rem]')
-    line2?.classList.add('!opacity-0')
-    line3?.classList.add('!-rotate-45', '!-translate-y-[0.4rem]')
+    menu?.classList.remove('-translate-y-[500%]')
+    menu?.classList.add('flex')
+    menu?.classList.remove('hidden')
+    svg?.classList.add('rotate-90')
   }
 
   function hideMenu() {
     html?.classList.remove('overflow-y-hidden')
-    menu?.classList.add('-translate-x-[500%]')
-    line1?.classList.remove('!rotate-45', '!translate-y-[0.4rem]')
-    line2?.classList.remove('!opacity-0')
-    line3?.classList.remove('!-rotate-45', '!-translate-y-[0.4rem]')
+    menu?.classList.add('-translate-y-[500%]')
+    menu?.classList.remove('flex')
+    menu?.classList.add('hidden')
+    svg?.classList.remove('rotate-90')
   }
 </script>
 
 <style>
-  button span {
-    border: 1px solid var(--color-primary-coral);
-    display: block;
-    transition: all 0.3s ease-out;
-    height: 0.125rem;
-    width: 1.5rem;
-    border-radius: 0.5rem;
-  }
-
   li {
     animation-name: section-mobile-enter;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 300;
+    color: white;
+    text-align: center;
   }
 
   @keyframes section-mobile-enter {
+    0% {
+      color: white;
+      scale: 1;
+    }
     1% {
-      border-left: 4px solid var(--color-primary-blue);
-      font-weight: bold;
+      color: var(--color-primary-coral);
+      scale: 1.1;
     }
     99% {
-      border-left: 4px solid var(--color-primary-blue);
-      font-weight: bold;
+      color: var(--color-primary-coral);
+      scale: 1.1;
+    }
+    100% {
+      color: white;
+      scale: 1;
     }
   }
 </style>
