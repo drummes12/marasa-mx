@@ -1,11 +1,13 @@
 ---
 import logo from '@/assets/logo-blanco.svg'
 import Carousel from '@/components/carousel.astro'
+import LanguagePicker from '@/components/language-picker.astro'
 
 import { imagesHero } from '@/consts/images'
 ---
 
 <section class='relative h-screen'>
+  <LanguagePicker />
   <Carousel images={imagesHero} title='Hero' autoPlay />
   <header
     class='absolute top-0 flex flex-col items-center justify-center text-white w-full py-8'

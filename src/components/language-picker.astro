@@ -1,0 +1,90 @@
+---
+import CaretRight from '@/components/icons/caret-right.astro'
+import { languages } from '@/i18n/ui'
+import { getLangFromUrl } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+---
+
+<div class='absolute w-full max-w-[1440px] mx-auto inset-0'>
+  <div
+    class='absolute right-8 top-8 z-10 rounded-2xl overflow-hidden backdrop-blur-md'
+  >
+    <button
+      id='language-hamburger'
+      class=`text-white flex justify-center items-center gap-1 px-3 py-1`
+      aria-label='true'
+    >
+      <span
+        id='language-hamburger-section'
+        class='font-bold text-xl uppercase tracking-widest text-center'
+      >
+        {lang}
+      </span>
+      <CaretRight class='size-4 transition' />
+    </button>
+
+    <div
+      id='language-menu'
+      class=`w-full hidden h-fit text-white border-t-1 py-2 border-t-white flex-col justify-between items-center gap-8`
+    >
+      <ul class='flex flex-col w-full'>
+        {
+          Object.entries(languages).map(([lang]) => (
+            <li id={`language-${lang}`}>
+              <a
+                class='block font-bold text-xl uppercase tracking-widest text-center w-full hover:text-primary-coral'
+                href={`/${lang === 'es' ? '' : lang}`}
+              >
+                {lang}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  let languageMenuOpen = false
+
+  const menu = document.querySelector('#language-menu')
+  const title = document.querySelector('#language-hamburger-section')
+  const button = document.querySelector('#language-hamburger')
+  const svg = document.querySelector('#language-hamburger svg')
+  const optionsMenu = document.querySelectorAll('#language-menu li')
+
+  button?.addEventListener('click', () => {
+    languageMenuOpen = !languageMenuOpen
+
+    if (languageMenuOpen) {
+      showMenu()
+      return
+    }
+
+    hideMenu()
+  })
+
+  optionsMenu.forEach((option) => {
+    option.addEventListener('click', () => {
+      languageMenuOpen = false
+      title.textContent = option.textContent
+      hideMenu()
+    })
+  })
+
+  function showMenu() {
+    menu?.classList.remove('-translate-y-[500%]')
+    menu?.classList.add('flex')
+    menu?.classList.remove('hidden')
+    svg?.classList.add('rotate-90')
+  }
+
+  function hideMenu() {
+    menu?.classList.add('-translate-y-[500%]')
+    menu?.classList.remove('flex')
+    menu?.classList.add('hidden')
+    svg?.classList.remove('rotate-90')
+  }
+</script>
