@@ -39,13 +39,14 @@ const t = useTranslations(lang)
 
     <dialog
       id='gallery-all-dialog'
-      class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8'
+      class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center'
     >
       <Carousel
         title='gallery-all'
         images={imagesgallery}
         buttonsColor='var(--color-primary-blue)'
-        class='rounded-2xl'
+        class='rounded-2xl !h-fit'
+        classWrapper='[&>img]:!object-contain !h-fit'
         hasButtonsDegraded='[&>div]:!to-white opacity-30'
         hasIndicatorsDegraded='[&>div]:!to-white'
       />
@@ -60,13 +61,14 @@ const t = useTranslations(lang)
           return (
             <dialog
               id={`gallery-${tag}-dialog`}
-              class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8'
+              class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center'
             >
               <Carousel
                 title={`gallery-${tag}`}
                 images={tagImages}
                 buttonsColor='var(--color-primary-blue)'
-                class='rounded-2xl'
+                class='rounded-2xl !h-fit'
+                classWrapper='[&>img]:!object-contain !h-fit'
                 hasButtonsDegraded='[&>div]:!to-white opacity-30'
                 hasIndicatorsDegraded='[&>div]:!to-white'
               />
@@ -173,6 +175,7 @@ const t = useTranslations(lang)
       padding: 1.5rem 2rem;
       cursor: pointer;
       min-width: 250px;
+      border-radius: 0.5rem;
 
       &:hover {
         background-color: var(--color-primary-blue);
