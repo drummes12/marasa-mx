@@ -9,7 +9,7 @@ export interface Props {
 const { class: className = '', index, title, description } = Astro.props
 ---
 
-<li>
+<li id={`commons-areas-${title.replaceAll(' ', '-').toLowerCase()}`}>
   <details
     name='common-area'
     class:list={[className, 'relative backdrop-blur-lg transition']}

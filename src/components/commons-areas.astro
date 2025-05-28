@@ -11,23 +11,28 @@ const t = useTranslations(lang)
 const commonsAreas = [
   {
     title: t('commons-areas.items.security-24-hrs.title'),
-    description: t('commons-areas.items.security-24-hrs.description')
+    description: t('commons-areas.items.security-24-hrs.description'),
+    image: imagesCommonsAreas.security24hrs
   },
   {
     title: t('commons-areas.items.co-working-area.title'),
-    description: t('commons-areas.items.co-working-area.description')
+    description: t('commons-areas.items.co-working-area.description'),
+    image: imagesCommonsAreas.coworkingArea
   },
   {
     title: t('commons-areas.items.event-room.title'),
-    description: t('commons-areas.items.event-room.description')
+    description: t('commons-areas.items.event-room.description'),
+    image: imagesCommonsAreas.eventRoom
   },
   {
     title: t('commons-areas.items.gymnasium.title'),
-    description: t('commons-areas.items.gymnasium.description')
+    description: t('commons-areas.items.gymnasium.description'),
+    image: imagesCommonsAreas.gymnasium
   },
   {
     title: t('commons-areas.items.administration-office.title'),
-    description: t('commons-areas.items.administration-office.description')
+    description: t('commons-areas.items.administration-office.description'),
+    image: imagesCommonsAreas.administrationOffice
   }
 ]
 ---
@@ -56,9 +61,11 @@ const commonsAreas = [
       >
         <div class='flex-1 min-w-[250px]'>
           <img
-            src={imagesCommonsAreas.src}
+            id='commons-areas-image'
+            src={imagesCommonsAreas.security24hrs}
             alt={t('common-areas.img.alt')}
-            class='aspect-[7/9] lg:aspect-video object-cover rounded-xl'
+            class='aspect-[7/9] lg:aspect-video object-cover rounded-xl transition-all'
+            data-images={JSON.stringify(commonsAreas)}
           />
         </div>
 
@@ -85,3 +92,33 @@ const commonsAreas = [
     </div>
   </Section>
 </div>
+
+<script>
+  const $commonsAreasImage = document.querySelector(
+    '#commons-areas-image'
+  ) as HTMLImageElement
+  const $commonsAreas = document.querySelectorAll('#commons-areas [id]')
+
+  const commonsAreas = JSON.parse($commonsAreasImage.dataset.images || '{}')
+
+  $commonsAreas.forEach((li) => {
+    li.addEventListener('click', () => {
+      $commonsAreasImage.classList.add('animate-fade-in')
+
+      setTimeout(() => {
+        const index = Array.from($commonsAreas).indexOf(li) - 1
+        const { image } = commonsAreas[index]
+
+        $commonsAreasImage.src = image
+        $commonsAreasImage.classList.remove('animate-fade-in')
+      }, 300)
+    })
+  })
+</script>
+
+<style>
+  #commons-areas-image.animate-fade-in {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+</style>

@@ -39,8 +39,11 @@ export const imagesUbication = {
 }
 
 export const imagesCommonsAreas = {
-  src: '/images/gallery/alberca.webp',
-  alt: 'Alberca de Marasa'
+  security24hrs: '/images/gallery/caseta.webp',
+  coworkingArea: '/images/gallery/coworking.webp',
+  eventRoom: '/images/gallery/salon-de-eventos.webp',
+  gymnasium: '/images/gallery/gym.webp',
+  administrationOffice: '/images/gallery/marasa.webp'
 }
 
 export const imagesInventory = {
