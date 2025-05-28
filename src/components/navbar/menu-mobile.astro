@@ -1,0 +1,108 @@
+---
+const { sections } = Astro.props
+---
+
+<button
+  id='navbar-hamburger'
+  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-secondary-color rounded-lg p-2 aspect-square bg-primary-color/70
+  hover:scale-105 hover:shadow-md hover:bg-primary-color
+  active:scale-95 active:shadow-inner transition`
+  aria-label='Abrir menú'
+>
+  <span class='-translate-y-0.5'></span>
+  <span class='my-1 opacity-100'></span>
+  <span class='translate-y-0.5'></span>
+</button>
+
+<div
+  id='navbar-menu-mobile'
+  class=`z-50 w-full absolute left-0 top-[calc(100%+0.5rem)] h-[calc(100dvh-100%-1.5rem)]
+  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg p-6 -translate-x-[500%] transition rounded-lg flex flex-col justify-between items-center gap-4 overflow-hidden`
+>
+  <ul class='flex flex-col w-full'>
+    {
+      sections.map(({ title, href }) => (
+        <li
+          id={`navbar-${href.replaceAll('/#', '')}`}
+          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-lg hover:bg-primary-color'
+        >
+          <a class='block w-full px-4 py-4' href={href}>
+            {title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  let mobileMenuOpen = false
+
+  const html = document.querySelector('html')
+  const menu = document.querySelector('#navbar-menu-mobile')
+  const button = document.querySelector('#navbar-hamburger')
+  const line1 = document.querySelector('#navbar-hamburger span:nth-child(1)')
+  const line2 = document.querySelector('#navbar-hamburger span:nth-child(2)')
+  const line3 = document.querySelector('#navbar-hamburger span:nth-child(3)')
+  const optionsMenu = document.querySelectorAll('#navbar-menu-mobile li')
+
+  button?.addEventListener('click', () => {
+    mobileMenuOpen = !mobileMenuOpen
+
+    if (mobileMenuOpen) {
+      showMenu()
+      return
+    }
+
+    hideMenu()
+  })
+
+  optionsMenu.forEach((option) => {
+    option.addEventListener('click', () => {
+      mobileMenuOpen = false
+      hideMenu()
+    })
+  })
+
+  function showMenu() {
+    html?.classList.add('overflow-y-hidden')
+    menu?.classList.remove('-translate-x-[500%]')
+    line1?.classList.add('!rotate-45', '!translate-y-[0.4rem]')
+    line2?.classList.add('!opacity-0')
+    line3?.classList.add('!-rotate-45', '!-translate-y-[0.4rem]')
+  }
+
+  function hideMenu() {
+    html?.classList.remove('overflow-y-hidden')
+    menu?.classList.add('-translate-x-[500%]')
+    line1?.classList.remove('!rotate-45', '!translate-y-[0.4rem]')
+    line2?.classList.remove('!opacity-0')
+    line3?.classList.remove('!-rotate-45', '!-translate-y-[0.4rem]')
+  }
+</script>
+
+<style>
+  button span {
+    border: 1px solid var(--color-primary-coral);
+    display: block;
+    transition: all 0.3s ease-out;
+    height: 0.125rem;
+    width: 1.5rem;
+    border-radius: 0.5rem;
+  }
+
+  li {
+    animation-name: section-mobile-enter;
+  }
+
+  @keyframes section-mobile-enter {
+    1% {
+      border-left: 4px solid var(--color-primary-blue);
+      font-weight: bold;
+    }
+    99% {
+      border-left: 4px solid var(--color-primary-blue);
+      font-weight: bold;
+    }
+  }
+</style>

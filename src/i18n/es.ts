@@ -1,4 +1,11 @@
 export default {
+  'navbar.welcome': 'Bienvenido',
+  'navbar.life-style': 'Estilo de vida',
+  'navbar.premises': 'Premisas',
+  'navbar.ubication': 'Ubicación',
+  'navbar.commons-areas': 'Áreas comunes',
+  'navbar.inventory': 'Inventario',
+  'navbar.gallery': 'Galería',
   'home.title': 'Marasa Wonderful Living',
   'home.description': 'Marasa',
   'welcome.section': 'Bienvenido a',

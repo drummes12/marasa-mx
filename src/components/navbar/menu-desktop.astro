@@ -1,0 +1,49 @@
+---
+const { sections } = Astro.props
+---
+
+<ul
+  id='navbar-menu-desktop'
+  class='hidden md:flex flex-wrap gap-x-8 gap-y-2 items-center justify-around w-full group py-4'
+>
+  {
+    sections.map(({ title, href }) => (
+      <li
+        id={`navbar-${href.replaceAll('/#', '')}`}
+        class='md:group-hover:opacity-40 md:hover:!opacity-100 md:hover:underline md:hover:!text-primary-coral md:hover:!font-normal transition-all'
+      >
+        <a href={href}>{title}</a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  li {
+    animation-name: section-desktop-enter;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+  }
+
+  @keyframes section-desktop-enter {
+    0% {
+      color: white;
+      scale: 1;
+    }
+    1% {
+      color: var(--color-primary-coral);
+      scale: 1.1;
+    }
+    99% {
+      color: var(--color-primary-coral);
+      scale: 1.1;
+    }
+    100% {
+      color: white;
+      scale: 1;
+    }
+  }
+</style>
