@@ -9,9 +9,21 @@ import { imagesHero } from '@/consts/images'
 <section class='relative h-screen'>
   <LanguagePicker />
   <Carousel images={imagesHero} title='Hero' autoPlay />
+
   <header
     class='absolute top-0 flex flex-col items-center justify-center text-white w-full py-8'
   >
-    <img id='background' src={logo.src} alt='Logo de Marasa' class='h-32' />
+    <div class='absolute inset-0 w-full h-full pointer-events-none'>
+      <div
+        class='absolute left-0 top-0 w-full h-1/2 bg-gradient-to-b from-black/60 to-transparent'
+      >
+      </div>
+    </div>
+    <img
+      id='background'
+      src={logo.src}
+      alt='Logo de Marasa'
+      class='h-32 z-10'
+    />
   </header>
 </section>
