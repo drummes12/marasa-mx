@@ -52,7 +52,9 @@ const { sections } = Astro.props
 
   const html = document.querySelector('html')
   const menu = document.querySelector('#navbar-menu-mobile')
-  const title = document.querySelector('#navbar-hamburger-section')
+  const title = document.querySelector(
+    '#navbar-hamburger-section'
+  ) as HTMLSpanElement
   const button = document.querySelector('#navbar-hamburger')
   const svg = document.querySelector('#navbar-hamburger svg')
   const optionsMenu = document.querySelectorAll('#navbar-menu-mobile li')
@@ -61,7 +63,7 @@ const { sections } = Astro.props
   document.querySelectorAll('section[id]').forEach((section) => {
     const key = section.id
     const li = document.querySelector(`#navbar-${key}`)
-    if (li) {
+    if (li?.textContent) {
       sectionsMap.set(section, li.textContent.trim())
     }
   })
@@ -71,12 +73,21 @@ const { sections } = Astro.props
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const label = sectionsMap.get(entry.target)
-          if (label) title.textContent = label
+          if (label) {
+            title.textContent = label
+            optionsMenu.forEach((option) => {
+              option.classList.remove('section-active')
+            })
+            const activeOption = menu?.querySelector(
+              `#navbar-${entry.target.id}`
+            )
+            activeOption?.classList.add('section-active')
+          }
         }
       })
     },
     {
-      rootMargin: '0px 0px -50% 0px', // actúa cuando la sección entra al centro
+      rootMargin: '0px 0px -50% 0px',
       threshold: 0.1
     }
   )
@@ -121,30 +132,10 @@ const { sections } = Astro.props
 
 <style>
   li {
-    animation-name: section-mobile-enter;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-weight: 300;
     color: white;
     text-align: center;
-  }
-
-  @keyframes section-mobile-enter {
-    0% {
-      color: white;
-      scale: 1;
-    }
-    1% {
-      color: var(--color-primary-coral);
-      scale: 1.1;
-    }
-    99% {
-      color: var(--color-primary-coral);
-      scale: 1.1;
-    }
-    100% {
-      color: white;
-      scale: 1;
-    }
   }
 </style>

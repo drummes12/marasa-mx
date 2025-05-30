@@ -10,7 +10,9 @@ const { sections } = Astro.props
     sections.map(({ title, href }) => (
       <li
         id={`navbar-${href.replaceAll('/#', '')}`}
-        class='md:group-hover:opacity-40 md:hover:!opacity-100 md:hover:underline md:hover:!text-primary-coral md:hover:!font-normal transition-all'
+        class={`md:group-hover:opacity-40 md:hover:!opacity-100 md:hover:underline md:hover:!text-primary-coral md:hover:!font-normal transition-all ${
+          href === '/#welcome' ? 'section-active' : ''
+        }`}
       >
         <a href={href}>{title}</a>
       </li>
@@ -18,32 +20,41 @@ const { sections } = Astro.props
   }
 </ul>
 
-<style>
-  li {
-    animation-name: section-desktop-enter;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-weight: 300;
-    color: white;
-    text-align: center;
-  }
+<script>
+  const menu = document.querySelector('#navbar-menu-desktop')
+  const optionsMenu = document.querySelectorAll('#navbar-menu-desktop li')
 
-  @keyframes section-desktop-enter {
-    0% {
-      color: white;
-      scale: 1;
+  const sectionsMap = new Map()
+  document.querySelectorAll('section[id]').forEach((section) => {
+    const key = section.id
+    const li = document.querySelector(`#navbar-${key}`)
+    if (li?.textContent) {
+      sectionsMap.set(section, li.textContent.trim())
     }
-    1% {
-      color: var(--color-primary-coral);
-      scale: 1.1;
+  })
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const label = sectionsMap.get(entry.target)
+          if (label) {
+            optionsMenu.forEach((option) => {
+              option.classList.remove('section-active')
+            })
+            const activeOption = menu?.querySelector(
+              `#navbar-${entry.target.id}`
+            )
+            activeOption?.classList.add('section-active')
+          }
+        }
+      })
+    },
+    {
+      rootMargin: '0px 0px -50% 0px',
+      threshold: 0.1
     }
-    99% {
-      color: var(--color-primary-coral);
-      scale: 1.1;
-    }
-    100% {
-      color: white;
-      scale: 1;
-    }
-  }
-</style>
+  )
+
+  sectionsMap.forEach((_, section) => observer.observe(section))
+</script>

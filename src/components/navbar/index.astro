@@ -64,35 +64,17 @@ const SECTIONS = [
   }
 
   #navbar li {
-    animation-fill-mode: both;
-    animation-timeline: scroll();
-  }
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 300;
+    color: white;
+    scale: 1;
+    text-align: center;
 
-  #navbar #navbar-welcome {
-    animation-range: entry 10% exit 25%;
-  }
-
-  #navbar #navbar-life-style {
-    animation-range: entry 25% exit 38%;
-  }
-
-  #navbar #navbar-premises {
-    animation-range: entry 38% exit 46%;
-  }
-
-  #navbar #navbar-ubication {
-    animation-range: entry 46% exit 58%;
-  }
-
-  #navbar #navbar-commons-areas {
-    animation-range: entry 58% exit 62%;
-  }
-
-  #navbar #navbar-inventory {
-    animation-range: entry 62% exit 74%;
-  }
-
-  #navbar #navbar-gallery {
-    animation-range: entry 74% exit 90%;
+    &.section-active {
+      color: var(--color-primary-coral);
+      scale: 1.1;
+      font-weight: 400;
+    }
   }
 </style>
