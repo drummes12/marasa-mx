@@ -1,40 +1,49 @@
+import hero1 from '@/assets/images/hero/usos_multiples.jpg'
+import hero2 from '@/assets/images/hero/marasa_vista.jpg'
+import hero3 from '@/assets/images/hero/marasa.jpg'
+
+import welcome1 from '@/assets/images/welcome/sala.jpg'
+import welcome2 from '@/assets/images/welcome/puerto_vallarta_sunset_playa_los_arcos.jpg'
+
+import lifeStyle from '@/assets/images/puerto_vallarta_vista_ciudad.jpg'
+
+import ubication from '@/assets/images/mapa_marasa.jpg'
+
+import inventory from '@/assets/images/conjunto.png'
+
 export const imagesHero = [
   {
-    src: '/images/hero/hero-1.webp',
-    alt: 'image-1'
+    src: hero1,
+    alt: 'Marasa usos múltiples'
   },
   {
-    src: '/images/hero/hero-1.webp',
-    alt: 'image-2'
+    src: hero2,
+    alt: 'Marasa vista'
   },
   {
-    src: '/images/hero/hero-1.webp',
-    alt: 'image-3'
-  },
-  {
-    src: '/images/hero/hero-1.webp',
-    alt: 'image-4'
+    src: hero3,
+    alt: 'Marasa fachada'
   }
 ]
 
 export const imagesWelcome = [
   {
-    src: '/images/welcome/sala.webp',
-    alt: 'Sala de estar'
+    src: welcome1,
+    alt: 'Sala de estar en Marasa'
   },
   {
-    src: '/images/welcome/puerto-vallarta-sunset-playa-los-arcos.webp',
+    src: welcome2,
     alt: 'Atardecer en puerto vallarta'
   }
 ]
 
 export const imagesLifeStyle = {
-  src: '/images/life-style.jpg',
+  src: lifeStyle,
   alt: 'Atardecer en puerto vallarta'
 }
 
 export const imagesUbication = {
-  src: '/images/mapa-marasa.webp',
+  src: ubication,
   alt: 'Mapa para encontrar Marasa'
 }
 
@@ -47,7 +56,7 @@ export const imagesCommonsAreas = {
 }
 
 export const imagesInventory = {
-  src: '/images/conjunto.webp',
+  src: inventory,
   alt: 'Conjunto de Marasa'
 }
 

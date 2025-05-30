@@ -1,9 +1,10 @@
 ---
+import { Image } from 'astro:assets'
 import { imagesUbication } from '@/consts/images'
 ---
 
 <section id='ubication' class='w-full h-auto'>
-  <img
+  <Image
     src={imagesUbication.src}
     alt={imagesUbication.alt}
     class='w-full h-full object-cover aspect-video object-right-top'

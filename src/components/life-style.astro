@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import Section from '@/components/section.astro'
 import { imagesLifeStyle } from '@/consts/images'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
@@ -28,7 +29,7 @@ const t = useTranslations(lang)
       {t('life-style.paragraph')}
     </p>
 
-    <img
+    <Image
       src={imagesLifeStyle.src}
       alt={t('life-style.image.alt')}
       class='w-full h-full aspect-[7/9] sm:aspect-[2/1] object-cover rounded-2xl'
