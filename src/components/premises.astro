@@ -1,5 +1,7 @@
 ---
-import Ripple from './icons/ripple.astro'
+import Beach from './icons/beach.astro'
+import Stores from './icons/stores.astro'
+import GreenAreas from './icons/green-areas.astro'
 import Section from '@/components/section.astro'
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
@@ -15,7 +17,7 @@ const t = useTranslations(lang)
   >
     <div class='px-8 md:px-24 py-20 w-full text-primary-blue'>
       <heading
-        class='uppercase text-center mb-20 h-fit flex flex-col items-center gap-8'
+        class='uppercase text-center mb-12 h-fit flex flex-col items-center gap-8'
       >
         <h2 class='text-lg sm:text-xl tracking-[1rem]'>
           {t('premises.section')}
@@ -28,22 +30,22 @@ const t = useTranslations(lang)
       </heading>
 
       <p
-        class='text-center text-xl font-light tracking-widest text-pretty max-w-[80ch] mx-auto mb-20'
+        class='text-center text-xl font-light tracking-widest text-pretty max-w-[80ch] mx-auto mb-12'
       >
         {t('premises.paragraph')}
       </p>
 
       <ul class='flex flex-row flex-wrap gap-8 justify-center items-center'>
         <li>
-          <Ripple class='size-24' />
+          <Beach class='size-24' />
           <h5>{t('premises.items.nearby-beaches')}</h5>
         </li>
         <li>
-          <Ripple class='size-24' />
+          <Stores class='size-24' />
           <h5>{t('premises.items.commercial-plazas')}</h5>
         </li>
         <li>
-          <Ripple class='size-24' />
+          <GreenAreas class='size-24' />
           <h5>{t('premises.items.green-areas')}</h5>
         </li>
       </ul>

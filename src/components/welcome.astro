@@ -12,7 +12,7 @@ const t = useTranslations(lang)
 <Section id='welcome' class='flex flex-col items-center justify-center'>
   <div class='px-8 md:px-24 w-full'>
     <heading
-      class='uppercase text-center py-20 h-fit flex flex-col items-center gap-8'
+      class='uppercase text-center pt-20 pb-12 h-fit flex flex-col items-center gap-8'
     >
       <h2 class='text-md md:text-xl tracking-[1rem] text-primary-coral'>
         {t('welcome.section')}
@@ -35,6 +35,7 @@ const t = useTranslations(lang)
     <Carousel
       images={imagesWelcome}
       title='Welcome'
+      class='aspect-video max-w-[1200px] !min-h-[780px] mx-auto'
       classWrapper='p-14 md:p-20 gap-28 md:gap-40 [&>img]:rounded-2xl'
       buttonsColor='var(--color-primary-blue)'
     />

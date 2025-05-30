@@ -29,7 +29,7 @@ export const imagesWelcome = [
 ]
 
 export const imagesLifeStyle = {
-  src: '/images/life-style.webp',
+  src: '/images/life-style.jpg',
   alt: 'Atardecer en puerto vallarta'
 }
 
