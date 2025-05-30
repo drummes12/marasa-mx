@@ -6,7 +6,7 @@ export default {
   'navbar.commons-areas': 'Commons Areas',
   'navbar.inventory': 'Inventory',
   'navbar.gallery': 'Gallery',
-  'home.title': 'Marasa Wonderful Living',
+  'home.title': 'Marasa Residencial',
   'home.description': 'Marasa',
   'welcome.section': 'Welcome to',
   'welcome.paragraph':
@@ -15,10 +15,11 @@ export default {
   'options.model': 'Model unit',
   'options.inventory': 'Inventory',
   'options.magazine': 'Magazine',
+  'options.prices': 'Price list',
   'life-style.section': 'Life style',
   'life-style.title': 'Live to the fullest',
   'life-style.paragraph':
-    'In Marasa, every day is an opportunity to live to the fullest. Live surrounded by comfort and exclusivity, with amenities that complement an active and relaxed lifestyle. From a well-equipped gymnasium to a rooftop jacuzzi, here you will find spaces designed for unique moments with your family or friends. Enjoy access to green areas, coworking spaces, and rooftop, all designed to cater to those who seek quality and distinction in every detail.',
+    'At Marasa, every day is an opportunity to enjoy it to the fullest. Live surrounded by comfort and exclusivity, with amenities that complement an active and relaxed lifestyle. From an equipped gym to a pool with jacuzzi, here you will find spaces designed to share unique moments with your family or friends. Enjoy access to green areas, coworking spaces and rooftop, all designed for those who seek quality and distinction in every detail.',
   'life-style.image.alt': 'Life style image',
   'premises.section': 'Our premises',
   'premises.title': 'Your ideal place',
