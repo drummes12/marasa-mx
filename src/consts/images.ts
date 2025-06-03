@@ -70,12 +70,12 @@ export const imagesgallery = [
   {
     src: '/images/gallery/coworking.webp',
     alt: 'Coworking de Marasa',
-    tags: ['amenities']
+    tags: ['layout']
   },
   {
     src: '/images/gallery/gym.webp',
     alt: 'Gimnasio de Marasa',
-    tags: ['amenities']
+    tags: ['layout']
   },
   {
     src: '/images/gallery/fachada-frontal.webp',
@@ -100,11 +100,11 @@ export const imagesgallery = [
   {
     src: '/images/gallery/salon-de-eventos.webp',
     alt: 'Salón de eventos de Marasa',
-    tags: ['amenities']
+    tags: ['layout']
   },
   {
     src: '/images/gallery/alberca.webp',
     alt: 'Alberca de Marasa',
-    tags: ['amenities']
+    tags: ['layout']
   }
 ]

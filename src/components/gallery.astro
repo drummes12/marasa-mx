@@ -17,12 +17,12 @@ const t = useTranslations(lang)
       class='uppercase text-center mb-8 h-fit flex flex-col items-center gap-8'
     >
       <h2 class='text-lg sm:text-xl tracking-[1rem] text-primary-coral'>
-        Visita nuestra
+        {t('gallery.section')}
       </h2>
       <h1
         class='text-3xl sm:text-5xl tracking-[1rem] font-semibold leading-tight text-primary-blue'
       >
-        Galería
+        {t('gallery.title')}
       </h1>
     </heading>
 
@@ -30,9 +30,9 @@ const t = useTranslations(lang)
       id='gallery-buttons'
       class='w-full flex flex-row flex-wrap items-center justify-around tracking-widest font-normal border-b-1 border-primary-blue/40'
     >
-      <button id='all'>Todo</button>
-      <button id='amenities'>Amenidades</button>
-      <button id='commons-areas'>Áreas comunes</button>
+      <button id='all'>{t('gallery.button.all')}</button>
+      <button id='layout'>{t('gallery.button.layout')}</button>
+      <button id='commons-areas'>{t('gallery.button.commons-areas')}</button>
     </div>
 
     <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}></div>
