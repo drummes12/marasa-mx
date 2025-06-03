@@ -11,34 +11,40 @@ const t = useTranslations(lang)
 
 const commonsAreas = [
   {
-    id: 'security24hrs',
-    title: t('commons-areas.items.security-24-hrs.title'),
-    description: t('commons-areas.items.security-24-hrs.description'),
-    image: imagesCommonsAreas.security24hrs
-  },
-  {
-    id: 'coworkingArea',
-    title: t('commons-areas.items.co-working-area.title'),
-    description: t('commons-areas.items.co-working-area.description'),
-    image: imagesCommonsAreas.coworkingArea
-  },
-  {
-    id: 'eventRoom',
-    title: t('commons-areas.items.event-room.title'),
-    description: t('commons-areas.items.event-room.description'),
-    image: imagesCommonsAreas.eventRoom
+    id: 'multipurposeRoom',
+    title: t('commons-areas.items.multipurposeRoom.title'),
+    description: t('commons-areas.items.multipurposeRoom.description'),
+    image: imagesCommonsAreas.multipurposeRoom
   },
   {
     id: 'gym',
-    title: t('commons-areas.items.gymnasium.title'),
-    description: t('commons-areas.items.gymnasium.description'),
-    image: imagesCommonsAreas.gymnasium
+    title: t('commons-areas.items.gym.title'),
+    description: t('commons-areas.items.gym.description'),
+    image: imagesCommonsAreas.gym
   },
   {
-    id: 'administrationOffice',
-    title: t('commons-areas.items.administration-office.title'),
-    description: t('commons-areas.items.administration-office.description'),
-    image: imagesCommonsAreas.administrationOffice
+    id: 'security247',
+    title: t('commons-areas.items.security247.title'),
+    description: t('commons-areas.items.security247.description'),
+    image: imagesCommonsAreas.security24 - 7
+  },
+  {
+    id: 'terrace',
+    title: t('commons-areas.items.terrace.title'),
+    description: t('commons-areas.items.terrace.description'),
+    image: imagesCommonsAreas.terrace
+  },
+  {
+    id: 'bbqArea',
+    title: t('commons-areas.items.bbqArea.title'),
+    description: t('commons-areas.items.bbqArea.description'),
+    image: imagesCommonsAreas.bbqArea
+  },
+  {
+    id: 'pool',
+    title: t('commons-areas.items.pool.title'),
+    description: t('commons-areas.items.pool.description'),
+    image: imagesCommonsAreas.pool
   }
 ]
 ---
@@ -92,14 +98,6 @@ const commonsAreas = [
               />
             ))
           }
-
-          <li class='mx-auto mt-12'>
-            <a
-              href='#'
-              class='text-primary-coral underline cursor-pointer uppercase text-lg'
-              >Cargar más</a
-            >
-          </li>
         </ul>
       </div>
     </div>

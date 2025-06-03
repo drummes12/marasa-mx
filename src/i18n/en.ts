@@ -31,20 +31,23 @@ export default {
   'commons-areas.section': 'Discover our different',
   'commons-areas.title': 'Common areas',
   'common-areas.img.alt': 'Common area image',
-  'commons-areas.items.security-24-hrs.title': 'Security 24 HRS',
-  'commons-areas.items.security-24-hrs.description':
+  'commons-areas.items.multipurposeRoom.title': 'Multi-purpose Room',
+  'commons-areas.items.multipurposeRoom.description':
     'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
-  'commons-areas.items.co-working-area.title': 'Co-working area',
-  'commons-areas.items.co-working-area.description':
+  'commons-areas.items.gym.title': 'Gym',
+  'commons-areas.items.gym.description':
     'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
-  'commons-areas.items.event-room.title': 'Event room',
-  'commons-areas.items.event-room.description':
+  'commons-areas.items.security247.title': 'Security 24/7',
+  'commons-areas.items.security247.description':
     'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
-  'commons-areas.items.gymnasium.title': 'Gymnasium',
-  'commons-areas.items.gymnasium.description':
+  'commons-areas.items.terrace.title': 'Terrace',
+  'commons-areas.items.terrace.description':
     'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
-  'commons-areas.items.administration-office.title': 'Administration office',
-  'commons-areas.items.administration-office.description':
+  'commons-areas.items.bbqArea.title': 'BBQ Area',
+  'commons-areas.items.bbqArea.description':
+    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
+  'commons-areas.items.pool.title': 'Pool with Jacuzzi',
+  'commons-areas.items.pool.description':
     'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
   'inventory.section': 'Inventory',
   'inventory.title': 'Meet your new home',

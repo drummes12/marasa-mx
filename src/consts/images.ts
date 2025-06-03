@@ -54,11 +54,12 @@ export const imagesUbication = {
 }
 
 export const imagesCommonsAreas = {
-  security24hrs: caseta,
-  coworkingArea: coworking,
-  eventRoom: eventRoom,
+  multipurposeRoom: eventRoom,
   gym: gym,
-  administrationOffice: alberca
+  security247: caseta,
+  terrace: coworking,
+  bbqArea: caseta,
+  pool: alberca
 }
 
 export const imagesInventory = {

@@ -32,21 +32,23 @@ export default {
   'commons-areas.section': 'Conoce nuestras diferentes',
   'commons-areas.title': 'Áreas comunes',
   'common-areas.img.alt': 'Imagen de área común',
-  'commons-areas.items.security-24-hrs.title': 'Seguridad 24 HRS',
-  'commons-areas.items.security-24-hrs.description':
+  'commons-areas.items.multipurposeRoom.title': 'Salón de Usos Múltiples',
+  'commons-areas.items.multipurposeRoom.description':
     'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
-  'commons-areas.items.co-working-area.title': 'Área de co-working',
-  'commons-areas.items.co-working-area.description':
+  'commons-areas.items.gym.title': 'Gimnasio',
+  'commons-areas.items.gym.description':
     'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
-  'commons-areas.items.event-room.title': 'Salón de eventos',
-  'commons-areas.items.event-room.description':
+  'commons-areas.items.security247.title': 'Seguridad 24/7',
+  'commons-areas.items.security247.description':
     'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
-  'commons-areas.items.gymnasium.title': 'Gimnasio',
-  'commons-areas.items.gymnasium.description':
+  'commons-areas.items.terrace.title': 'Terraza',
+  'commons-areas.items.terrace.description':
     'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
-  'commons-areas.items.administration-office.title':
-    'Oficina de administración',
-  'commons-areas.items.administration-office.description':
+  'commons-areas.items.bbqArea.title': 'Área de Asador',
+  'commons-areas.items.bbqArea.description':
+    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+  'commons-areas.items.pool.title': 'Alberca con Jacuzzi',
+  'commons-areas.items.pool.description':
     'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
   'inventory.section': 'Inventario',
   'inventory.title': 'Conoce tu nuevo hogar',
