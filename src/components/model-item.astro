@@ -6,7 +6,7 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 export interface Props {
-  model: 'coral-model' | 'snail-model' | 'plus-model'
+  model: 'coral-model' | 'caracol-model' | 'plus-model'
   size: string
   price: string
   bedrooms: string
@@ -36,10 +36,10 @@ const { model, size, price, bedrooms } = Astro.props
       <h4>{t('inventory.bedrooms')}</h4>
       <p id='bedrooms'>{bedrooms}</p>
 
-      <h4>{t('inventory.size')}</h4>
+      <h4>{t('inventory.since-size')}</h4>
       <p id='size'>{size}</p>
 
-      <h4>{t('inventory.price')}</h4>
+      <h4>{t('inventory.since-price')}</h4>
       <p id='price'>{price}</p>
     </div>
   </article>

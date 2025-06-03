@@ -93,10 +93,10 @@ const t = useTranslations(lang)
         id='information'
         class='overflow-hidden hidden flex-col justify-center items-center absolute -bottom-24 left-4 rounded-lg border-1 text-gray-700 uppercase bg-white shadow-lg tracking-wider transition-all'
       >
-        <div class='flex flex-col p-3'>
+        <div class='flex flex-col p-3 w-full'>
           <div class='flex flex-row justify-between items-start'>
             <div class='flex flex-col'>
-              <h3 id='modelo' class='text-xl font-semibold leading-none'>
+              <h3 id='model' class='text-xl font-semibold leading-none'>
                 {t(`inventory.coral-model`)}
               </h3>
               <small id='status' class='text-sm opacity-80 text-secondary-blue'
@@ -115,18 +115,18 @@ const t = useTranslations(lang)
             <h4>{t('inventory.bedrooms')}</h4>
             <p id='bedrooms'>3</p>
 
-            <h4>{t('inventory.size')}</h4>
+            <h4>{t('inventory.lote')}</h4>
             <p id='size'>186.57 m2</p>
 
-            <h4>{t('inventory.price')}</h4>
+            <h4>{t('inventory.price-with-rooftop')}</h4>
             <p id='price'>$2,743,195 (MXN)</p>
           </div>
         </div>
 
         <div class='max-h-48 aspect-video'>
-          <img
+          <Image
             id='model-image'
-            src='/images/gallery/fachada-frontal.webp'
+            src={inventoryData[0].image}
             alt={t('inventory.image')}
             class='w-full h-full'
           />
@@ -144,6 +144,7 @@ const t = useTranslations(lang)
   const inventoryData = document.querySelectorAll('[data-info]')
   const information = document.querySelector('article#information')
 
+  const modelElement = information?.querySelector('#model')
   const idElement = information?.querySelector('#id')
   const statusElement = information?.querySelector('#status')
   const bedroomsElement = information?.querySelector('#bedrooms')
@@ -155,7 +156,7 @@ const t = useTranslations(lang)
 
   inventoryData.forEach((data) => {
     const id = (data as HTMLElement).dataset.id ?? ''
-    const { status, bedrooms, size, price, image } = JSON.parse(
+    const { status, bedrooms, size, price, image, model } = JSON.parse(
       (data as HTMLElement).dataset.info || '{}'
     )
     const lang = (data as HTMLElement).dataset.lang as 'en' | 'es'
@@ -167,11 +168,15 @@ const t = useTranslations(lang)
       information?.classList.add(status)
       if (statusElement)
         statusElement.textContent = t(`inventory.${status as keyof typeof t}`)
+      if (modelElement)
+        modelElement.textContent = t(
+          `inventory.${model as keyof typeof t}-model`
+        )
       if (idElement) idElement.textContent = id
       if (bedroomsElement) bedroomsElement.textContent = bedrooms
       if (sizeElement) sizeElement.textContent = size
       if (priceElement) priceElement.textContent = price
-      if (modelImageElement) modelImageElement.src = image
+      if (modelImageElement) modelImageElement.src = image.src
 
       inventoryData.forEach((data) => {
         data.classList.replace('md:opacity-100', 'md:opacity-80')
