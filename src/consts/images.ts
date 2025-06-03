@@ -11,6 +11,12 @@ import ubication from '@/assets/images/mapa_marasa.jpg'
 
 import inventory from '@/assets/images/conjunto.png'
 
+import alberca from '@/assets/images/commons_areas/alberca.jpg'
+import caseta from '@/assets/images/commons_areas/caseta.jpg'
+import coworking from '@/assets/images/commons_areas/coworking.jpg'
+import gym from '@/assets/images/commons_areas/gym.jpg'
+import eventRoom from '@/assets/images/commons_areas/salon_de_eventos.jpg'
+
 export const imagesHero = [
   {
     src: hero1,
@@ -48,11 +54,11 @@ export const imagesUbication = {
 }
 
 export const imagesCommonsAreas = {
-  security24hrs: '/images/gallery/caseta.webp',
-  coworkingArea: '/images/gallery/coworking.webp',
-  eventRoom: '/images/gallery/salon-de-eventos.webp',
-  gymnasium: '/images/gallery/gym.webp',
-  administrationOffice: '/images/gallery/marasa.webp'
+  security24hrs: caseta,
+  coworkingArea: coworking,
+  eventRoom: eventRoom,
+  gym: gym,
+  administrationOffice: alberca
 }
 
 export const imagesInventory = {

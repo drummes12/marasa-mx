@@ -1,15 +1,16 @@
 ---
 export interface Props {
+  id: string
   class?: string
   index: number
   title: string
   description: string
 }
 
-const { class: className = '', index, title, description } = Astro.props
+const { id, class: className = '', index, title, description } = Astro.props
 ---
 
-<li id={`commons-areas-${title.replaceAll(' ', '-').toLowerCase()}`}>
+<li id={`commons-areas-${id}`}>
   <details
     name='common-area'
     class:list={[className, 'relative backdrop-blur-lg transition']}

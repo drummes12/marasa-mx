@@ -1,26 +1,23 @@
 export const inventoryData = [
-  // First row
-  { id: 101, x: '25.5%', y: '34%', status: 'available', bedrooms: 3, size: '185.20 m2', price: '$2,695,000 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 102, x: '30%', y: '37.5%', status: 'reserved', bedrooms: 2, size: '179.45 m2', price: '$2,625,750 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 103, x: '34.5%', y: '41.5%', status: 'sold', bedrooms: 3, size: '187.80 m2', price: '$2,768,000 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 104, x: '39.5%', y: '45.5%', status: 'sold', bedrooms: 4, size: '192.00 m2', price: '$2,865,300 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 105, x: '44.5%', y: '49.5%', status: 'sold', bedrooms: 3, size: '183.90 m2', price: '$2,710,500 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
+  { id: 101, x: '25.5%', y: '34%', status: 'available', bedrooms: 4, size: '125.64 m2', price: '$7,737,000', image: 'CARACOL' },
+  { id: 102, x: '30%', y: '37.5%', status: 'reserved', bedrooms: 4, size: '137.13 m2', price: '$7,935,000', image: 'CORAL' },
+  { id: 103, x: '34.5%', y: '41.5%', status: 'sold', bedrooms: 4, size: '137.24 m2', price: '$7,938,000', image: 'CARACOL' },
+  { id: 104, x: '39.5%', y: '45.5%', status: 'sold', bedrooms: 4, size: '137.12 m2', price: '$7,938,000', image: 'CORAL' },
+  { id: 105, x: '44.5%', y: '49.5%', status: 'sold', bedrooms: 4, size: '136.8 m2', price: '$7,938,000', image: 'CARACOL' },
 
-  // Second row
-  { id: 106, x: '61.5%', y: '68%', status: 'reserved', bedrooms: 3, size: '186.40 m2', price: '$2,738,800 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 107, x: '64%', y: '62%', status: 'sold', bedrooms: 2, size: '180.10 m2', price: '$2,611,000 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 108, x: '67%', y: '55%', status: 'available', bedrooms: 3, size: '188.30 m2', price: '$2,785,900 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 109, x: '69.5%', y: '49%', status: 'reserved', bedrooms: 4, size: '193.20 m2', price: '$2,901,400 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 110, x: '72%', y: '43.4%', status: 'available', bedrooms: 3, size: '185.60 m2', price: '$2,712,750 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 111, x: '74%', y: '38%', status: 'available', bedrooms: 3, size: '186.00 m2', price: '$2,730,000 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 112, x: '76.5%', y: '32.5%', status: 'available', bedrooms: 2, size: '181.75 m2', price: '$2,642,900 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 113, x: '78.5%', y: '28%', status: 'reserved', bedrooms: 3, size: '189.20 m2', price: '$2,802,300 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
+  { id: 106, x: '61.5%', y: '68%', status: 'reserved', bedrooms: 4, size: '200.23 m2', price: '$9,048,000', image: 'CARACOL' },
+  { id: 107, x: '64%', y: '62%', status: 'sold', bedrooms: 4, size: '139.94 m2', price: '$7,980,000', image: 'CORAL' },
+  { id: 108, x: '67%', y: '55%', status: 'available', bedrooms: 4, size: '139.91 m2', price: '$7,980,000', image: 'CARACOL' },
+  { id: 109, x: '69.5%', y: '49%', status: 'reserved', bedrooms: 4, size: '139.88 m2', price: '$7,980,000', image: 'CORAL' },
+  { id: 110, x: '72%', y: '43.4%', status: 'available', bedrooms: 4, size: '139.85 m2', price: '$7,980,000', image: 'CARACOL' },
+  { id: 111, x: '74%', y: '38%', status: 'available', bedrooms: 4, size: '139.84 m2', price: '$7,980,000', image: 'CORAL' },
+  { id: 112, x: '76.5%', y: '32.5%', status: 'available', bedrooms: 4, size: '139.88 m2', price: '$7,980,000', image: 'CARACOL' },
+  { id: 113, x: '78.5%', y: '28%', status: 'reserved', bedrooms: 4, size: '193.98 m2', price: '$8,650,000', image: 'CORAL' },
 
-  // Third row
-  { id: 114, x: '46%', y: '26.5%', status: 'available', bedrooms: 4, size: '190.45 m2', price: '$2,825,600 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 115, x: '40.3%', y: '24.5%', status: 'available', bedrooms: 3, size: '185.30 m2', price: '$2,699,950 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 116, x: '34.5%', y: '22.5%', status: 'available', bedrooms: 2, size: '180.25 m2', price: '$2,618,800 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 117, x: '29.2%', y: '21%', status: 'available', bedrooms: 3, size: '187.00 m2', price: '$2,750,500 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 118, x: '23.7%', y: '19%', status: 'available', bedrooms: 3, size: '184.90 m2', price: '$2,684,700 (MXN)', image: '/images/gallery/fachada-frontal.webp' },
-  { id: 119, x: '18.5%', y: '18%', status: 'available', bedrooms: 4, size: '191.15 m2', price: '$2,838,000 (MXN)', image: '/images/gallery/fachada-frontal.webp' }
+  { id: 114, x: '46%', y: '26.5%', status: 'available', bedrooms: 4, size: '168.08 m2', price: '$8,397,000', image: 'CORAL' },
+  { id: 115, x: '40.3%', y: '24.5%', status: 'available', bedrooms: 4, size: '165.06 m2', price: '$8,378,000', image: 'CARACOL' },
+  { id: 116, x: '34.5%', y: '22.5%', status: 'available', bedrooms: 4, size: '164.46 m2', price: '$8,376,000', image: 'CORAL' },
+  { id: 117, x: '29.2%', y: '21%', status: 'available', bedrooms: 4, size: '163.92 m2', price: '$8,373,000', image: 'CARACOL' },
+  { id: 118, x: '23.7%', y: '19%', status: 'available', bedrooms: 4, size: '163.49 m2', price: '$8,371,000', image: 'CORAL' },
+  { id: 119, x: '18.5%', y: '18%', status: 'available', bedrooms: 4, size: '161.48 m2', price: '$8,342,000', image: 'CARACOL' }
 ]
