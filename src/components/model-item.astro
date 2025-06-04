@@ -1,24 +1,39 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import CaretRight from './icons/caret-right.astro'
+import { inventoryData as TypeInventoryData } from 'src/consts/inventory'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 export interface Props {
+  class?: string
   model: 'coral-model' | 'caracol-model' | 'plus-model'
-  size: string
-  price: string
-  bedrooms: string
+  description?: string
+  size?: string
+  price?: string
+  idsModel?: typeof TypeInventoryData
+  [key: string]: any
 }
 
-const { model, size, price, bedrooms } = Astro.props
+const {
+  class: className,
+  model,
+  description,
+  size,
+  price,
+  idsModel = [],
+  ...moreDetails
+} = Astro.props
 ---
 
 <details
   open
   name='model-information'
-  class='flex-col rounded-lg p-3 border-1 border-white/60 text-primary-coral uppercase bg-white shadow-md tracking-wider'
+  class:list={[
+    className,
+    'flex-col rounded-lg p-3 uppercase shadow-md tracking-wider'
+  ]}
 >
   <summary class='flex flex-row justify-between items-center group'>
     <h3 id='modelo' class='text-xl font-semibold leading-none'>
@@ -28,47 +43,86 @@ const { model, size, price, bedrooms } = Astro.props
   </summary>
 
   <article>
-    <div class='w-full h-[1px] my-2 bg-primary-coral'></div>
+    <div id='divider' class='w-full h-[1px] my-2'></div>
+
+    {
+      description && (
+        <p class='my-2 text-sm normal-case font-extralight tracking-wide'>
+          {description}
+        </p>
+      )
+    }
+
+    {
+      idsModel.length > 0 && (
+        <div class='flex flex-row flex-wrap gap-2 font-extralight tracking-widest text-gray-700 my-4'>
+          {idsModel.map(({ id }) => (
+            <div class='flex items-center justify-center px-2 py-0 bg-white rounded-full'>
+              {id}
+            </div>
+          ))}
+        </div>
+      )
+    }
 
     <div
-      class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide text-lg [&>h4]:font-normal'
+      class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide
+    text-lg [&>h4]:font-normal'
     >
-      <h4>{t('inventory.bedrooms')}</h4>
-      <p id='bedrooms'>{bedrooms}</p>
+      {
+        Object.entries(moreDetails)?.map(([key, value]) => (
+          <>
+            <h4>{t(`inventory.${key}`)}</h4>
+            <p id={key}>{value}</p>
+          </>
+        ))
+      }
 
-      <h4>{t('inventory.since-size')}</h4>
-      <p id='size'>{size}</p>
+      {
+        size && (
+          <>
+            <h4>{t('inventory.since-size')}</h4>
+            <p id='size'>{size}</p>
+          </>
+        )
+      }
 
-      <h4>{t('inventory.since-price')}</h4>
-      <p id='price'>{price}</p>
+      {
+        price && (
+          <>
+            <h4>{t('inventory.since-price')}</h4>
+            <p id='price'>{price}</p>
+          </>
+        )
+      }
     </div>
   </article>
-</details>
 
-<style>
-  details {
-    overflow: hidden;
+  <style>
+    details {
+      overflow: hidden;
 
-    & summary::-webkit-details-marker {
-      display: none;
-    }
+      & summary::-webkit-details-marker {
+        display: none;
+      }
 
-    & summary {
-      position: relative;
-      list-style: none;
-      [open] & svg {
-        rotate: 90deg;
+      & summary {
+        position: relative;
+        list-style: none;
+        [open] & svg {
+          rotate: 90deg;
+        }
       }
     }
-  }
 
-  article {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-  details[open] article {
-    max-height: 500px;
-    transition: max-height 0.3s ease;
-  }
-</style>
+    article {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    details[open] article {
+      max-height: 500px;
+      transition: max-height 0.3s ease;
+    }
+  </style>
+</details>

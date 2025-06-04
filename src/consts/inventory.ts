@@ -1,6 +1,13 @@
 import facadeCaracol from '@/assets/images/facades/fachada_frontal.jpg'
 import facadeCoral from '@/assets/images/facades/fachada_frontal.jpg'
 
+export const plusModelData = {
+  terrain: '140.11 m2',
+  garden: '62.73 m2',
+  construction: '221.95 m2',
+  price: '$254.000,00'
+}
+
 export const inventoryData = [
   {
     id: 101,

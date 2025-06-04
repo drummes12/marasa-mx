@@ -1,24 +1,72 @@
 ---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import ModelItem from './model-item.astro'
+import { inventoryData, plusModelData } from 'src/consts/inventory'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const idsCaracolModel = inventoryData.filter(({ model }) => model === 'caracol')
+const idsCoralModel = inventoryData.filter(({ model }) => model === 'coral')
+
+const parseArea = (area: string) =>
+  parseFloat(area.replace(' m2', '').replace(',', '.'))
+
+const parsePrice = (price: string) =>
+  parseFloat(price.replace(/\./g, '').replace(',', '.').replace('$', '').trim())
+
+const lowestSizeCaracolModel = idsCaracolModel.reduce(
+  (acc, item) => (parseArea(item.lote) < parseArea(acc.lote) ? item : acc),
+  idsCaracolModel[0]
+)
+const lowestSizeCoralModel = idsCoralModel.reduce(
+  (acc, item) => (parseArea(item.lote) < parseArea(acc.lote) ? item : acc),
+  idsCoralModel[0]
+)
+
+const lowestPriceCaracolModel = idsCaracolModel.reduce(
+  (acc, item) => (parsePrice(item.price) < parsePrice(acc.price) ? item : acc),
+  idsCaracolModel[0]
+)
+const lowestPriceCoralModel = idsCoralModel.reduce(
+  (acc, item) => (parsePrice(item.price) < parsePrice(acc.price) ? item : acc),
+  idsCoralModel[0]
+)
+
+const lowestBedroomsCaracolModel = idsCaracolModel.reduce(
+  (acc, item) => (item.bedrooms < acc.bedrooms ? item : acc),
+  idsCaracolModel[0]
+)
+const lowestBedroomsCoralModel = idsCoralModel.reduce(
+  (acc, item) => (item.bedrooms < acc.bedrooms ? item : acc),
+  idsCoralModel[0]
+)
 ---
 
 <div class='flex flex-col md:hidden w-full max-w-sm gap-8'>
   <ModelItem
-    model='coral-model'
-    size='186.57 m2'
-    price='$2,743,195 (MXN)'
-    bedrooms='3'
-  />
-  <ModelItem
+    class='bg-primary-blue text-white [&_#divider]:bg-white/20'
+    idsModel={idsCaracolModel}
     model='caracol-model'
-    size='186.57 m2'
-    price='$2,743,195 (MXN)'
-    bedrooms='3'
+    size={lowestSizeCaracolModel.lote}
+    price={lowestPriceCaracolModel.price}
+    bedrooms={lowestBedroomsCaracolModel.bedrooms}
   />
   <ModelItem
+    class='bg-white/20 text-gray-700 [&_#divider]:bg-gray-700/20'
+    idsModel={idsCoralModel}
+    model='coral-model'
+    size={lowestSizeCoralModel.lote}
+    price={lowestPriceCoralModel.price}
+    bedrooms={lowestBedroomsCoralModel.bedrooms}
+  />
+  <ModelItem
+    class='bg-white text-gray-700 [&_#divider]:bg-gray-700/20'
+    description={t('inventory.plus-model.description')}
     model='plus-model'
-    size='186.57 m2'
-    price='$2,743,195 (MXN)'
-    bedrooms='3'
+    terrain={plusModelData.terrain}
+    garden={plusModelData.garden}
+    construction={plusModelData.construction}
+    price={plusModelData.price}
   />
 </div>
