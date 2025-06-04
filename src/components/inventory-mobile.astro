@@ -1,7 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import ModelItem from './model-item.astro'
-import { inventoryData, plusModelData } from 'src/consts/inventory'
+import { inventoryData, plusModelData } from '@/consts/inventory'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
