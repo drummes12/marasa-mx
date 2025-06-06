@@ -31,12 +31,12 @@ const t = useTranslations(lang)
     </p>
   </div>
 
-  <div class='min-h-[85vh] w-full'>
+  <div class='w-full'>
     <Carousel
       images={imagesWelcome}
       title='Welcome'
-      class='aspect-video max-w-[1200px] !min-h-[780px] mx-auto'
-      classWrapper='p-14 md:p-20 gap-28 md:gap-40 [&>img]:rounded-2xl'
+      class='aspect-[7/9] md:aspect-video max-w-[1200px] mx-auto'
+      classWrapper='p-14 md:p-20 gap-28 md:gap-40 [&>img]:rounded-2xl [&>img]:!min-h-full'
       buttonsColor='var(--color-primary-blue)'
     />
   </div>

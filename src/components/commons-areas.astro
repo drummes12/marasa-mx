@@ -26,7 +26,7 @@ const commonsAreas = [
     id: 'security247',
     title: t('commons-areas.items.security247.title'),
     description: t('commons-areas.items.security247.description'),
-    image: imagesCommonsAreas.security24 - 7
+    image: imagesCommonsAreas.security247
   },
   {
     id: 'terrace',
@@ -76,12 +76,12 @@ const commonsAreas = [
           class='flex-1 min-w-[250px] aspect-[7/9] lg:aspect-video rounded-xl transition-all overflow-hidden'
         >
           {
-            Object.entries(imagesCommonsAreas).map(([key, image]) => (
+            Object.entries(imagesCommonsAreas).map(([key, image], index) => (
               <Image
                 id={`commons-areas-image-${key}`}
                 src={image as ImageMetadata}
                 alt={t('common-areas.img.alt')}
-                class='hidden w-full h-full object-cover'
+                class={`${index === 0 ? '' : 'hidden'} w-full h-full object-cover`}
               />
             ))
           }
@@ -113,7 +113,9 @@ const commonsAreas = [
   const $commonsAreasImages = document.querySelectorAll(
     'img[id^="commons-areas-image-"]'
   ) as NodeListOf<HTMLImageElement>
-  $commonsAreasImages[0].classList.remove('hidden')
+  if ($commonsAreasImages[0]) {
+    $commonsAreasImages[0].classList.remove('hidden')
+  }
 
   $commonsAreas.forEach((li) => {
     li.addEventListener('click', () => {
@@ -122,7 +124,7 @@ const commonsAreas = [
       setTimeout(() => {
         $commonsAreasImages.forEach((image) => image.classList.add('hidden'))
         const idImage = li.id.replace('commons-areas-', '')
-        const image = $commonsAreasImages.values().find((image) => {
+        const image = Array.from($commonsAreasImages).find((image) => {
           return image.id === `commons-areas-image-${idImage}`
         })
         if (image) image.classList.remove('hidden')

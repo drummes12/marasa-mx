@@ -35,7 +35,13 @@ const t = useTranslations(lang)
       <button id='commons-areas'>{t('gallery.button.commons-areas')}</button>
     </div>
 
-    <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}></div>
+    <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}>
+      {
+        imagesgallery.map((image) => (
+          <button style={{ backgroundImage: `url(${image.src})` }} />
+        ))
+      }
+    </div>
 
     <dialog
       id='gallery-all-dialog'
