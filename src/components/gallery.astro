@@ -37,8 +37,11 @@ const t = useTranslations(lang)
 
     <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}>
       {
-        imagesgallery.map((image) => (
-          <button style={{ backgroundImage: `url(${image.src.src})` }} />
+        imagesgallery.map(({ src, tags }) => (
+          <button
+            class={tags.join('-')}
+            style={{ backgroundImage: `url(${src.src})` }}
+          />
         ))
       }
     </div>
@@ -51,7 +54,7 @@ const t = useTranslations(lang)
         title='gallery-all'
         images={imagesgallery}
         buttonsColor='var(--color-primary-blue)'
-        class='rounded-2xl !h-fit'
+        class='rounded-2xl !h-fit bg-white'
         classWrapper='[&>img]:!object-contain !h-fit'
         hasButtonsDegraded='[&>div]:!to-white opacity-30'
         hasIndicatorsDegraded='[&>div]:!to-white'
@@ -73,7 +76,7 @@ const t = useTranslations(lang)
                 title={`gallery-${tag}`}
                 images={tagImages}
                 buttonsColor='var(--color-primary-blue)'
-                class='rounded-2xl !h-fit'
+                class='rounded-2xl !h-fit bg-white'
                 classWrapper='[&>img]:!object-contain !h-fit'
                 hasButtonsDegraded='[&>div]:!to-white opacity-30'
                 hasIndicatorsDegraded='[&>div]:!to-white'
@@ -131,10 +134,11 @@ const t = useTranslations(lang)
 
     setTimeout(() => {
       $galleryImages.innerHTML = ''
-      imagesgallery.forEach((image, index) => {
-        if (tag === 'all' || image.tags.includes(tag)) {
+      imagesgallery.forEach(({ src, tags }) => {
+        if (tag === 'all' || tags.includes(tag)) {
           const btn = document.createElement('button')
-          btn.style.backgroundImage = `url(${image.src.src})`
+          btn.style.backgroundImage = `url(${src.src})`
+          btn.classList.add(tags.join('-'))
           btn.addEventListener('click', onClickImage)
           $galleryImages.appendChild(btn)
         }
@@ -224,14 +228,20 @@ const t = useTranslations(lang)
       transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
-      bacgkouund-repeat: no-repeat;
-      background-size: cover;
+      background-repeat: no-repeat;
       background-position: center;
 
       &:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       }
+    }
+
+    button.commons-areas {
+      background-size: cover;
+    }
+    button.layout {
+      background-size: contain;
     }
   }
 

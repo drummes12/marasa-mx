@@ -5,7 +5,7 @@ import CaretRight from '@/components/icons/caret-right.astro'
 export interface Props {
   class?: string
   images: {
-    src: ImageMetadata | string
+    src: ImageMetadata
     alt: string
   }[]
   title: string
@@ -50,11 +50,9 @@ const title = titleProp.toLowerCase().replace(/\s+/g, '-')
     {
       images.map(({ src, alt }) => (
         <Image
-          src={src as string}
+          src={src}
           alt={alt}
-          class='min-w-full object-cover'
-          width={1920}
-          height={1080}
+          class='max-h-[80vh] min-w-full object-cover'
         />
       ))
     }
