@@ -74,7 +74,7 @@ export const imagesCommonsAreas = {
   multipurposeRoom: eventRoom,
   gym: gym,
   security247: caseta,
-  terrace: coworking,
+  terrace: bbqArea,
   bbqArea: bbqArea,
   pool: alberca
 }
