@@ -25,7 +25,7 @@ export default {
   'premises.section': 'Nuestras premisas',
   'premises.title': 'Tu lugar ideal',
   'premises.paragraph':
-    'Marasa es un desarrollo que destaca por su exclusividad, diseño arquitectónico y ubicación estratégica. Con 23 unidades, ofrece privacidad y comodidad. Sus amenidades de lujo y acabados de calidad superior hacen de este proyecto un lugar único para vivir.',
+    'Marasa es un desarrollo que destaca por su exclusividad, diseño arquitectónico y ubicación estratégica. Con 19 unidades, ofrece privacidad y comodidad. Sus amenidades de lujo y acabados de calidad superior hacen de este proyecto un lugar único para vivir.',
   'premises.items.nearby-beaches': 'Playas Cercanas',
   'premises.items.commercial-plazas': 'Plazas Comerciales',
   'premises.items.green-areas': 'Áreas Verdes',
@@ -34,22 +34,22 @@ export default {
   'common-areas.img.alt': 'Imagen de área común',
   'commons-areas.items.multipurposeRoom.title': 'Salón de Usos Múltiples',
   'commons-areas.items.multipurposeRoom.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+    'Espacio cerrado, ideal para reuniones privadas o actividades recreativas.',
   'commons-areas.items.gym.title': 'Gimnasio',
   'commons-areas.items.gym.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+    'Totalmente equipado para mantenerte en forma,  diseñado para adaptarse a tus rutinas y estilo de vida. ',
   'commons-areas.items.security247.title': 'Seguridad 24/7',
   'commons-areas.items.security247.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+    'Sistema de vigilancia y acceso controlado las 24 horas.',
   'commons-areas.items.terrace.title': 'Terraza',
   'commons-areas.items.terrace.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+    'Ambiente abierto perfecto para relajarte o socializar.',
   'commons-areas.items.bbqArea.title': 'Área de Asador',
   'commons-areas.items.bbqArea.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+    'Zona para eventos sociales y parrilladas con amigos y familia.',
   'commons-areas.items.pool.title': 'Alberca con Jacuzzi',
   'commons-areas.items.pool.description':
-    'La zona de seguridad 24 horas del condominio garantiza la protección y tranquilidad de los residentes en todo momento.',
+    'Disfruta la calma y el confort de la alberca con jacuzzi.',
   'inventory.section': 'Inventario',
   'inventory.title': 'Conoce tu nuevo hogar',
   'inventory.available': 'Disponible',

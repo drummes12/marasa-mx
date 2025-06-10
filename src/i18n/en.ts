@@ -10,7 +10,7 @@ export default {
   'home.description': 'Marasa',
   'welcome.section': 'Welcome to',
   'welcome.paragraph':
-    'A exclusive development in Puerto Vallarta that redefines the concept of home. Located in one of the most privileged areas of the city, it offers a perfect combination of privacy, comfort, and unique living style.',
+    'An exclusive development in Puerto Vallarta that redefines the concept of home. Located in one of the city’s most privileged areas, it offers the perfect blend of privacy, comfort, and a unique lifestyle.',
   'options.tour': 'Virtual tour',
   'options.model': 'Model unit',
   'options.inventory': 'Inventory',
@@ -19,36 +19,36 @@ export default {
   'life-style.section': 'Life style',
   'life-style.title': 'Live to the fullest',
   'life-style.paragraph':
-    'At Marasa, every day is an opportunity to enjoy it to the fullest. Live surrounded by comfort and exclusivity, with amenities that complement an active and relaxed lifestyle. From an equipped gym to a pool with jacuzzi, here you will find spaces designed to share unique moments with your family or friends. Enjoy access to green areas, coworking spaces and rooftop, all designed for those who seek quality and distinction in every detail.',
+    'At Marasa, every day is an opportunity to enjoy life to the fullest. Surrounded by comfort and exclusivity, the amenities are designed to support both an active and relaxed lifestyle. From a fully equipped gym to a pool with jacuzzi, every space is made for creating unforgettable moments with your family and friends. Enjoy access to green areas, coworking spaces, and a rooftop terrace—crafted for those who value quality and distinction in every detail.',
   'life-style.image.alt': 'Life style image',
   'premises.section': 'Our premises',
   'premises.title': 'Your ideal place',
   'premises.paragraph':
-    'Marasa is a project that stands out for its exclusivity, architectural design, and strategic location. With 23 units, it offers privacy and comfort. Its luxurious amenities and superior quality make this project a unique place to live.',
+    'Marasa stands out for its exclusivity, architectural design, and strategic location. With just 19 residences, it offers both privacy and comfort. Its luxurious amenities and premium finishes make it a truly unique place to live.',
   'premises.items.nearby-beaches': 'Nearby Beaches',
-  'premises.items.commercial-plazas': 'Commercial Plazas',
+  'premises.items.commercial-plazas': 'Shopping Plazas',
   'premises.items.green-areas': 'Green Areas',
   'commons-areas.section': 'Discover our different',
   'commons-areas.title': 'Common areas',
   'common-areas.img.alt': 'Common area image',
-  'commons-areas.items.multipurposeRoom.title': 'Multi-purpose Room',
+  'commons-areas.items.multipurposeRoom.title': 'Multipurpose Room',
   'commons-areas.items.multipurposeRoom.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
+    'An enclosed space, ideal for private gatherings or recreational activities.',
   'commons-areas.items.gym.title': 'Gym',
   'commons-areas.items.gym.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
-  'commons-areas.items.security247.title': 'Security 24/7',
+    'Fully equipped to help you stay fit, designed to match your routines and lifestyle.',
+  'commons-areas.items.security247.title': '24/7 Security',
   'commons-areas.items.security247.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
+    'Surveillance system and controlled access around the clock.',
   'commons-areas.items.terrace.title': 'Terrace',
   'commons-areas.items.terrace.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
-  'commons-areas.items.bbqArea.title': 'BBQ Area',
+    'An open-air space perfect for relaxing or socializing.',
+  'commons-areas.items.bbqArea.title': 'Grill Area',
   'commons-areas.items.bbqArea.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
+    'A space designed for social gatherings and barbecues with friends and family.',
   'commons-areas.items.pool.title': 'Pool with Jacuzzi',
   'commons-areas.items.pool.description':
-    'The security 24 hours condominium ensures the protection and tranquility of residents at all times.',
+    'Enjoy the calm and comfort of the pool with jacuzzi.',
   'inventory.section': 'Inventory',
   'inventory.title': 'Meet your new home',
   'inventory.available': 'Available',
