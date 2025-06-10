@@ -38,14 +38,14 @@ const t = useTranslations(lang)
     <div id='gallery-images' data-images={JSON.stringify(imagesgallery)}>
       {
         imagesgallery.map((image) => (
-          <button style={{ backgroundImage: `url(${image.src})` }} />
+          <button style={{ backgroundImage: `url(${image.src.src})` }} />
         ))
       }
     </div>
 
     <dialog
       id='gallery-all-dialog'
-      class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center'
+      class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center overflow-hidden'
     >
       <Carousel
         title='gallery-all'
@@ -67,7 +67,7 @@ const t = useTranslations(lang)
           return (
             <dialog
               id={`gallery-${tag}-dialog`}
-              class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center'
+              class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center overflow-hidden'
             >
               <Carousel
                 title={`gallery-${tag}`}
@@ -131,10 +131,10 @@ const t = useTranslations(lang)
 
     setTimeout(() => {
       $galleryImages.innerHTML = ''
-      imagesgallery.forEach((image) => {
+      imagesgallery.forEach((image, index) => {
         if (tag === 'all' || image.tags.includes(tag)) {
           const btn = document.createElement('button')
-          btn.style.backgroundImage = `url(${image.src})`
+          btn.style.backgroundImage = `url(${image.src.src})`
           btn.addEventListener('click', onClickImage)
           $galleryImages.appendChild(btn)
         }

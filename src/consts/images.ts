@@ -1,21 +1,30 @@
-import hero1 from '@/assets/images/hero/usos_multiples.jpg'
-import hero2 from '@/assets/images/hero/marasa_vista.jpg'
-import hero3 from '@/assets/images/hero/marasa.jpg'
+import hero1 from '@/assets/images/hero/Marasa-Residencial-Puerto-Vallarta.jpg'
+import hero2 from '@/assets/images/hero/residencial-marasa-puerto-vallarta-renders-fraccionamiento-exclusivo.jpg'
+import hero3 from '@/assets/images/hero/marasa-residencial-puerto-vallarta-casas-lujo.jpg'
 
-import welcome1 from '@/assets/images/welcome/sala.jpg'
-import welcome2 from '@/assets/images/welcome/puerto_vallarta_sunset_playa_los_arcos.jpg'
+import welcome1 from '@/assets/images/welcome/interior-residencia-marasa-diseno-lujo-puerto-vallarta.webp'
+import welcome2 from '@/assets/images/welcome/Vista-Malecon-Personas-Puerto-Vallarta.jpg'
+import welcome3 from '@/assets/images/welcome/Muelle-Los-Muertos-Puerto-Vallarta.jpg'
+import welcome4 from '@/assets/images/welcome/Atardecer-Los-Arcos-Puerto-Vallarta-Centro.jpg'
 
 import lifeStyle from '@/assets/images/puerto_vallarta_vista_ciudad.jpg'
 
-import ubication from '@/assets/images/mapa_marasa.jpg'
+import ubication from '@/assets/images/ubicacion-marasa-residencial-gaviotas.jpg'
 
 import inventory from '@/assets/images/conjunto.png'
 
-import alberca from '@/assets/images/commons_areas/alberca.jpg'
-import caseta from '@/assets/images/commons_areas/caseta.jpg'
-import coworking from '@/assets/images/commons_areas/coworking.jpg'
-import gym from '@/assets/images/commons_areas/gym.jpg'
-import eventRoom from '@/assets/images/commons_areas/salon_de_eventos.jpg'
+import alberca from '@/assets/images/commons-areas/alberca-amenidades-marasa-residencial.jpg'
+import caseta from '@/assets/images/commons-areas/caseta-de-vigilancia-amenidades-marasa-residencial.jpg'
+import coworking from '@/assets/images/commons-areas/coworking-amenidades-marasa-residencial.jpg'
+import gym from '@/assets/images/commons-areas/gym-amenidades-marasa-residencial.jpg'
+import eventRoom from '@/assets/images/commons-areas/salon-de-usos-multiples-marasa-residencial.jpg'
+import bbqArea from '@/assets/images/commons-areas/area-de-asador-amenidades-marasa-residencial.jpg'
+
+import layout1 from '@/assets/images/gallery/layout/distribucion-casa-planta-baja-marasa-residencial.png'
+import layout2 from '@/assets/images/gallery/layout/distribucion-casa-planta-alta-marasa-residencial.png'
+import layout3 from '@/assets/images/gallery/layout/distribucion-casa-planta-rooftop-marasa-residencial.png'
+
+import facade from '@/assets/images/facades/fachada_frontal.jpg'
 
 export const imagesHero = [
   {
@@ -35,10 +44,18 @@ export const imagesHero = [
 export const imagesWelcome = [
   {
     src: welcome1,
-    alt: 'Sala de estar en Marasa'
+    alt: 'Interior de residencia Marasa, diseño Lujo'
   },
   {
     src: welcome2,
+    alt: 'Vista de Malecon en Puerto Vallarta'
+  },
+  {
+    src: welcome3,
+    alt: 'Muelle Los Muertos en Puerto Vallarta'
+  },
+  {
+    src: welcome4,
     alt: 'Atardecer en puerto vallarta'
   }
 ]
@@ -58,7 +75,7 @@ export const imagesCommonsAreas = {
   gym: gym,
   security247: caseta,
   terrace: coworking,
-  bbqArea: caseta,
+  bbqArea: bbqArea,
   pool: alberca
 }
 
@@ -69,43 +86,58 @@ export const imagesInventory = {
 
 export const imagesgallery = [
   {
-    src: '/images/gallery/coworking.webp',
-    alt: 'Coworking de Marasa',
+    src: layout1,
+    alt: 'Distribución de casas en planta baja',
     tags: ['layout']
   },
   {
-    src: '/images/gallery/gym.webp',
-    alt: 'Gimnasio de Marasa',
+    src: layout2,
+    alt: 'Distribución de casas en planta alta',
     tags: ['layout']
   },
   {
-    src: '/images/gallery/fachada-frontal.webp',
-    alt: 'Fachada frontal de Marasa',
-    tags: ['commons-areas']
-  },
-  {
-    src: '/images/gallery/caseta.webp',
-    alt: 'Caseta de Marasa',
-    tags: ['commons-areas']
-  },
-  {
-    src: '/images/gallery/marasa.webp',
-    alt: 'Marasa',
-    tags: ['commons-areas']
-  },
-  {
-    src: '/images/gallery/marasa-vista.webp',
-    alt: 'Vista de Marasa',
-    tags: ['commons-areas']
-  },
-  {
-    src: '/images/gallery/salon-de-eventos.webp',
-    alt: 'Salón de eventos de Marasa',
+    src: layout3,
+    alt: 'Distribución de casas en planta rooftop',
     tags: ['layout']
   },
   {
-    src: '/images/gallery/alberca.webp',
-    alt: 'Alberca de Marasa',
-    tags: ['layout']
+    src: hero3,
+    alt: 'Vista casas Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: facade,
+    alt: 'Vista fachada Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: bbqArea,
+    alt: 'Area de asador Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: eventRoom,
+    alt: 'Sala de usos múltiples Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: gym,
+    alt: 'Gimnasio de Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: coworking,
+    alt: 'Coworking de Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: caseta,
+    alt: 'Caseta de vigilancia de Marasa Residencial',
+    tags: ['commons-areas']
+  },
+  {
+    src: alberca,
+    alt: 'Alberca de Marasa Residencial',
+    tags: ['commons-areas']
   }
 ]
