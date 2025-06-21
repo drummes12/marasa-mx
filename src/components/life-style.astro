@@ -3,6 +3,7 @@ import { Image } from 'astro:assets'
 import Section from '@/components/section.astro'
 import { imagesLifeStyle } from '@/consts/images'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import Carousel from './carousel.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -58,6 +59,39 @@ const currentTag = 'coral-model'
           ))
       }
     </div>
+
+    {
+      Array.from(
+        new Set(
+          imagesLifeStyle.flatMap(
+            (img) => `${img.tags}_${img.screenResolution}`
+          )
+        )
+      ).map((img) => {
+        const tag = img.split('_')[0]
+        const screenResolution = img.split('_')[1]
+        const tagImages = imagesLifeStyle.filter(
+          (img) =>
+            img.tags.includes(tag) && img.screenResolution === screenResolution
+        )
+        return (
+          <dialog
+            id={`gallery-life-style-${img}-dialog`}
+            class='m-auto w-full h-full max-w-screen-lg bg-transparent rounded-2xl p-8 flex justify-center items-center overflow-hidden'
+          >
+            <Carousel
+              title={`gallery-life-style-${img}`}
+              images={tagImages}
+              buttonsColor='var(--color-primary-blue)'
+              class='rounded-2xl !h-fit bg-white'
+              classWrapper='[&>img]:!object-contain !h-fit'
+              hasButtonsDegraded='[&>div]:!to-white opacity-30'
+              hasIndicatorsDegraded='[&>div]:!to-white'
+            />
+          </dialog>
+        )
+      })
+    }
   </div>
 </Section>
 
@@ -104,12 +138,7 @@ const currentTag = 'coral-model'
     const dialog = document.querySelector(
       `#gallery-life-style-${tag}-dialog`
     ) as HTMLDialogElement
-    return (
-      dialog ||
-      (document.querySelector(
-        '#gallery-life-style-dialog-coral-model'
-      ) as HTMLDialogElement)
-    )
+    return dialog
   }
 
   function loadImages(tag = currentTag) {
@@ -122,10 +151,11 @@ const currentTag = 'coral-model'
 
     setTimeout(() => {
       $galleryImages.innerHTML = ''
-      images.forEach(({ src, tags }) => {
+      images.forEach(({ src, tags, alt }) => {
         if (tags.includes(tag)) {
           const btn = document.createElement('img')
           btn.src = src.src
+          btn.alt = alt
           btn.classList.add(tags.join('-'))
           btn.addEventListener('click', onClickImage)
           $galleryImages.appendChild(btn)
@@ -140,17 +170,21 @@ const currentTag = 'coral-model'
     const target = e.target as HTMLButtonElement
     if (!$galleryImages) return
 
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches
+
+    const currentDialogTag =
+      currentTag + '_' + (isDesktop ? 'desktop' : 'mobile')
     const index = Array.from($galleryImages.children).indexOf(target)
     if (index !== -1) {
       const event = new CustomEvent('carousel:update-index', {
         detail: {
           index,
-          carouselId: `#gallery-life-style-${currentTag}-dialog`
+          carouselId: `#gallery-life-style-${currentDialogTag}-dialog`
         }
       })
       window.dispatchEvent(event)
 
-      const dialog = getDialog(currentTag)
+      const dialog = getDialog(currentDialogTag)
       if (dialog) {
         dialog.showModal()
         dialog.addEventListener('mousedown', (e) => {
@@ -191,7 +225,8 @@ const currentTag = 'coral-model'
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 4rem;
-    max-width: 100%;
+    max-width: var(--container-4xl);
+    margin-inline: auto;
 
     transition:
       opacity 0.3s ease,
@@ -207,12 +242,11 @@ const currentTag = 'coral-model'
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 
-    image {
+    img {
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 0.5rem;
-      aspect-ratio: 4/3;
       overflow: hidden;
       cursor: pointer;
       transition:
@@ -233,7 +267,7 @@ const currentTag = 'coral-model'
     transform: scale(0.95);
   }
 
-  #gallery-life-style dialog {
+  #life-style dialog {
     opacity: 0;
     transform: translateY(-500%) scale(0);
     transition:
@@ -243,19 +277,19 @@ const currentTag = 'coral-model'
       display 1s ease-out allow-discrete;
   }
 
-  #gallery-life-style dialog[open] {
+  #life-style dialog[open] {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 
   @starting-style {
-    #gallery-life-style dialog[open] {
+    #life-style dialog[open] {
       opacity: 0;
       transform: translateY(-500%) scale(0);
     }
   }
 
-  #gallery-life-style dialog::backdrop {
+  #life-style dialog::backdrop {
     background-color: transparent;
     transition:
       display 1s allow-discrete,
@@ -263,7 +297,7 @@ const currentTag = 'coral-model'
       background-color 1s;
   }
 
-  #gallery-life-style dialog[open]::backdrop {
+  #life-style dialog[open]::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
   }
