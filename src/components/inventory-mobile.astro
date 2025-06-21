@@ -1,19 +1,15 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import ModelItem from './model-item.astro'
-import { inventoryData, plusModelData } from '@/consts/inventory'
+import inventoryData from '@/assets/inventory-data.json'
+import { plusModelData } from '@/consts/inventory'
+import { parseArea, parsePrice } from '@/utils'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const idsCaracolModel = inventoryData.filter(({ model }) => model === 'caracol')
 const idsCoralModel = inventoryData.filter(({ model }) => model === 'coral')
-
-const parseArea = (area: string) =>
-  parseFloat(area.replace(' m2', '').replace(',', '.'))
-
-const parsePrice = (price: string) =>
-  parseFloat(price.replace(/\./g, '').replace(',', '.').replace('$', '').trim())
 
 const lowestSizeCaracolModel = idsCaracolModel.reduce(
   (acc, item) => (parseArea(item.lote) < parseArea(acc.lote) ? item : acc),
@@ -41,6 +37,15 @@ const lowestBedroomsCoralModel = idsCoralModel.reduce(
   (acc, item) => (item.bedrooms < acc.bedrooms ? item : acc),
   idsCoralModel[0]
 )
+
+console.log({
+  lowestSizeCaracolModel,
+  lowestSizeCoralModel,
+  lowestPriceCaracolModel,
+  lowestPriceCoralModel,
+  lowestBedroomsCaracolModel,
+  lowestBedroomsCoralModel
+})
 ---
 
 <div class='flex flex-col md:hidden w-full max-w-sm gap-8'>
@@ -49,7 +54,7 @@ const lowestBedroomsCoralModel = idsCoralModel.reduce(
     idsModel={idsCaracolModel}
     model='caracol-model'
     size={lowestSizeCaracolModel.lote}
-    price={lowestPriceCaracolModel.price}
+    price={`$${parsePrice(lowestPriceCaracolModel.price)}`}
     bedrooms={lowestBedroomsCaracolModel.bedrooms}
   />
   <ModelItem
@@ -57,16 +62,13 @@ const lowestBedroomsCoralModel = idsCoralModel.reduce(
     idsModel={idsCoralModel}
     model='coral-model'
     size={lowestSizeCoralModel.lote}
-    price={lowestPriceCoralModel.price}
+    price={`$${parsePrice(lowestPriceCoralModel.price)}`}
     bedrooms={lowestBedroomsCoralModel.bedrooms}
   />
   <ModelItem
     class='bg-white text-gray-700 [&_#divider]:bg-gray-700/20'
     description={t('inventory.plus-model.description')}
     model='plus-model'
-    terrain={plusModelData.terrain}
-    garden={plusModelData.garden}
-    construction={plusModelData.construction}
-    price={plusModelData.price}
+    price={`$${parsePrice(plusModelData.price)}`}
   />
 </div>

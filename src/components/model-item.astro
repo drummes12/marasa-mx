@@ -1,7 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import CaretRight from './icons/caret-right.astro'
-import { inventoryData as TypeInventoryData } from '@/consts/inventory'
+import TypeInventoryData from '@/assets/inventory-data.json'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -13,6 +13,7 @@ export interface Props {
   size?: string
   price?: string
   idsModel?: typeof TypeInventoryData
+  plusInfo?: Array<string>
   [key: string]: any
 }
 
@@ -23,6 +24,7 @@ const {
   size,
   price,
   idsModel = [],
+  plusInfo,
   ...moreDetails
 } = Astro.props
 ---
@@ -65,8 +67,26 @@ const {
       )
     }
 
+    {
+      model === 'plus-model' && (
+        <div class='grid grid-cols-[repeat(2,_minmax(auto-fit,_1fr))] grid-rows-3 gap-3 grid-flow-col mb-4'>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div class='flex gap-2 items-center'>
+              <small class='flex size-8 aspect-square rounded-full bg-gray-700 text-white text-lg justify-center items-center'>
+                {index + 1}
+              </small>
+              <p class='text-gray-700 normal-case w-full'>
+                {t(`inventory.plus-model.info.${index + 1}`)}
+              </p>
+            </div>
+          ))}
+          <small />
+        </div>
+      )
+    }
+
     <div
-      class='grid grid-cols-2 grid-rows-3 gap-2 font-extralight tracking-wide
+      class='grid grid-cols-2 grid-rows-auto gap-2 font-extralight tracking-wide
     text-lg [&>h4]:font-normal'
     >
       {
@@ -96,6 +116,19 @@ const {
         )
       }
     </div>
+
+    {
+      model === 'plus-model' && (
+        <a
+          href='https://drive.google.com/file/d/1udlpI_tYtbE3m82sfJS8raCAfolWAY87/view?usp=sharing'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='text-sm font-light tracking-wide normal-case underline'
+        >
+          {t('inventory.plus-model.link')}
+        </a>
+      )
+    }
   </article>
 
   <style>
