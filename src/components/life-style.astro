@@ -6,6 +6,8 @@ import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+
+const currentTag = 'coral-model'
 ---
 
 <Section id='life-style' class='flex flex-col items-center justify-center'>
@@ -29,10 +31,247 @@ const t = useTranslations(lang)
       {t('life-style.paragraph')}
     </p>
 
-    <Image
-      src={imagesLifeStyle.src}
-      alt={t('life-style.image.alt')}
-      class='w-full h-full aspect-[7/9] sm:aspect-[2/1] object-cover rounded-2xl'
-    />
+    <div
+      id='gallery-life-style-buttons'
+      class='w-full flex flex-row flex-wrap items-center justify-around tracking-widest font-normal border-b-1 border-primary-blue/40'
+    >
+      <button id='coral-model'
+        >{t('gallery-life-style.button.coral-model')}</button
+      >
+      <button id='caracol-model'
+        >{t('gallery-life-style.button.caracol-model')}</button
+      >
+      <button id='additional'
+        >{t('gallery-life-style.button.additional')}</button
+      >
+    </div>
+
+    <div
+      id='gallery-life-style-images'
+      data-images={JSON.stringify(imagesLifeStyle)}
+    >
+      {
+        imagesLifeStyle
+          .filter(({ tags }) => tags.includes(currentTag))
+          .map(({ src, tags, alt }) => (
+            <Image class={tags.join('-')} src={src} alt={alt} />
+          ))
+      }
+    </div>
   </div>
 </Section>
+
+<script>
+  import { imagesLifeStyle as ImagesgalleryType } from '@/consts/images.ts'
+
+  const $html = document.querySelector('html') as HTMLHtmlElement
+  const $buttons = document.querySelectorAll(
+    '#gallery-life-style-buttons button'
+  ) as NodeListOf<HTMLButtonElement>
+  const $galleryImages = document.querySelector(
+    '#gallery-life-style-images'
+  ) as HTMLElement
+
+  const imagesgallery: typeof ImagesgalleryType = JSON.parse(
+    ($galleryImages as HTMLElement).dataset.images || '[]'
+  )
+
+  const imagesDesktop = imagesgallery.filter(
+    ({ screenResolution }) => screenResolution === 'desktop'
+  )
+  const imagesMobile = imagesgallery.filter(
+    ({ screenResolution }) => screenResolution === 'mobile'
+  )
+
+  let currentTag = 'coral-model'
+
+  loadImages()
+
+  window.addEventListener('resize', () => {
+    loadImages(currentTag)
+  })
+
+  $buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const target = e.target as HTMLButtonElement
+      const tag = target.id
+      currentTag = tag
+      loadImages(tag)
+    })
+  })
+
+  function getDialog(tag: string): HTMLDialogElement | null {
+    const dialog = document.querySelector(
+      `#gallery-life-style-${tag}-dialog`
+    ) as HTMLDialogElement
+    return (
+      dialog ||
+      (document.querySelector(
+        '#gallery-life-style-dialog-coral-model'
+      ) as HTMLDialogElement)
+    )
+  }
+
+  function loadImages(tag = currentTag) {
+    if (!$galleryImages) return
+
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches
+    const images = isDesktop ? imagesDesktop : imagesMobile
+
+    $galleryImages.classList.add('animating')
+
+    setTimeout(() => {
+      $galleryImages.innerHTML = ''
+      images.forEach(({ src, tags }) => {
+        if (tags.includes(tag)) {
+          const btn = document.createElement('img')
+          btn.src = src.src
+          btn.classList.add(tags.join('-'))
+          btn.addEventListener('click', onClickImage)
+          $galleryImages.appendChild(btn)
+        }
+      })
+
+      $galleryImages.classList.remove('animating')
+    }, 300)
+  }
+
+  function onClickImage(e: Event) {
+    const target = e.target as HTMLButtonElement
+    if (!$galleryImages) return
+
+    const index = Array.from($galleryImages.children).indexOf(target)
+    if (index !== -1) {
+      const event = new CustomEvent('carousel:update-index', {
+        detail: {
+          index,
+          carouselId: `#gallery-life-style-${currentTag}-dialog`
+        }
+      })
+      window.dispatchEvent(event)
+
+      const dialog = getDialog(currentTag)
+      if (dialog) {
+        dialog.showModal()
+        dialog.addEventListener('mousedown', (e) => {
+          if (e.target === dialog) dialog.close()
+        })
+        dialog.addEventListener('close', () => {
+          $html.classList.remove('overflow-hidden')
+        })
+
+        $html.classList.add('overflow-hidden')
+      }
+    }
+  }
+</script>
+
+<style is:global>
+  #gallery-life-style-buttons {
+    button {
+      min-width: min-content;
+      flex: 1;
+      text-transform: uppercase;
+      color: var(--color-primary-blue);
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      min-width: 250px;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: var(--color-primary-blue);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  #gallery-life-style-images {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 4rem;
+    max-width: 100%;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      cursor: pointer;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  #gallery-life-style-images.animating {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  #gallery-life-style dialog {
+    opacity: 0;
+    transform: translateY(-500%) scale(0);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out,
+      overlay 1s ease-out allow-discrete,
+      display 1s ease-out allow-discrete;
+  }
+
+  #gallery-life-style dialog[open] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @starting-style {
+    #gallery-life-style dialog[open] {
+      opacity: 0;
+      transform: translateY(-500%) scale(0);
+    }
+  }
+
+  #gallery-life-style dialog::backdrop {
+    background-color: transparent;
+    transition:
+      display 1s allow-discrete,
+      overlay 1s allow-discrete,
+      background-color 1s;
+  }
+
+  #gallery-life-style dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+
+  @starting-style {
+    #gallery-life-style dialog[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
+  }
+</style>

@@ -7,7 +7,15 @@ import welcome2 from '@/assets/images/welcome/Vista-Malecon-Personas-Puerto-Vall
 import welcome3 from '@/assets/images/welcome/Muelle-Los-Muertos-Puerto-Vallarta.jpg'
 import welcome4 from '@/assets/images/welcome/Atardecer-Los-Arcos-Puerto-Vallarta-Centro.jpg'
 
-import lifeStyle from '@/assets/images/puerto_vallarta_vista_ciudad.jpg'
+import casaResidencialEstiloDeFachadaModeloCoral from '@/assets/images/life-style/casa-residencial-estilo-de-fachada-modelo-coral.png'
+import distribucionCasaMarasaResidencialPlantaAlta from '@/assets/images/life-style/distribucion-casa-marasa-residencial-planta-alta.png'
+import distribucionCasaMarasaResidencialPlantaBaja from '@/assets/images/life-style/distribucion-casa-marasa-residencial-planta-baja.png'
+import distribucionCasaMarasaResidencialRooftop from '@/assets/images/life-style/distribucion-casa-marasa-residencial-rooftop.png'
+import estiloDeFachadaModeloCaracol from '@/assets/images/life-style/estilo-de-fachada-modelo-caracol.png'
+import estiloDeFachadaModeloCoral from '@/assets/images/life-style/estilo-de-fachada-modelo-coral.png'
+import marasaCasaResidencialModeloCaracol from '@/assets/images/life-style/marasa-casa-residencial-modelo-caracol.png'
+import marasaResidencialDistribucionRooftop from '@/assets/images/life-style/marasa-residencial-distribucion-rooftop.png'
+import residencialDistribucionPlantaAltaPuertoVallarta from '@/assets/images/life-style/residencial-distribucion-planta-alta-puertoVallarta.png'
 
 import ubication from '@/assets/images/ubicacion-marasa-residencial-gaviotas.jpg'
 
@@ -60,10 +68,80 @@ export const imagesWelcome = [
   }
 ]
 
-export const imagesLifeStyle = {
-  src: lifeStyle,
-  alt: 'Atardecer en puerto vallarta'
-}
+export const imagesLifeStyle = [
+  {
+    src: casaResidencialEstiloDeFachadaModeloCoral,
+    alt: 'Casa residencial estilo de fachada modelo Coral',
+    tags: ['coral-model'],
+    screenResolution: 'desktop'
+  },
+  {
+    src: distribucionCasaMarasaResidencialPlantaAlta,
+    alt: 'Distribución de casas Marasa Residencial Planta Alta',
+    tags: ['coral-model'],
+    screenResolution: 'desktop'
+  },
+  {
+    src: estiloDeFachadaModeloCoral,
+    alt: 'Estilo de fachada modelo Coral',
+    tags: ['coral-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: distribucionCasaMarasaResidencialPlantaBaja,
+    alt: 'Distribución de casas Marasa Residencial Planta Baja',
+    tags: ['coral-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: residencialDistribucionPlantaAltaPuertoVallarta,
+    alt: 'Residencial Distribución Planta Alta Puerto Vallarta',
+    tags: ['coral-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: marasaCasaResidencialModeloCaracol,
+    alt: 'Marasa Casa Residencial Modelo Caracol',
+    tags: ['caracol-model'],
+    screenResolution: 'desktop'
+  },
+  {
+    src: distribucionCasaMarasaResidencialPlantaAlta,
+    alt: 'Distribución de casas Marasa Residencial Planta Alta',
+    tags: ['caracol-model'],
+    screenResolution: 'desktop'
+  },
+  {
+    src: estiloDeFachadaModeloCaracol,
+    alt: 'Estilo de fachada modelo Caracol',
+    tags: ['caracol-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: distribucionCasaMarasaResidencialPlantaBaja,
+    alt: 'Distribución de casas Marasa Residencial Planta Baja',
+    tags: ['caracol-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: residencialDistribucionPlantaAltaPuertoVallarta,
+    alt: 'Residencial Distribución Planta Alta Puerto Vallarta',
+    tags: ['caracol-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: distribucionCasaMarasaResidencialRooftop,
+    alt: 'Distribución de casas Marasa Residencial Rooftop',
+    tags: ['additional'],
+    screenResolution: 'desktop'
+  },
+  {
+    src: marasaResidencialDistribucionRooftop,
+    alt: 'Marasa Residencial Distribución Rooftop',
+    tags: ['additional'],
+    screenResolution: 'mobile'
+  }
+]
 
 export const imagesUbication = {
   src: ubication,
