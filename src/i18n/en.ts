@@ -1,6 +1,6 @@
 export default {
   'navbar.welcome': 'Welcome',
-  'navbar.life-style': 'Life style',
+  'navbar.life-style': 'Facade style',
   'navbar.premises': 'Premises',
   'navbar.ubication': 'Ubication',
   'navbar.commons-areas': 'Commons Areas',

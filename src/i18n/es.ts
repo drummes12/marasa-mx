@@ -1,6 +1,6 @@
 export default {
   'navbar.welcome': 'Bienvenido',
-  'navbar.life-style': 'Estilo de vida',
+  'navbar.life-style': 'Estilo de fachada',
   'navbar.premises': 'Premisas',
   'navbar.ubication': 'Ubicación',
   'navbar.commons-areas': 'Áreas comunes',
