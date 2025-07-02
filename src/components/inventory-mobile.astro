@@ -37,15 +37,6 @@ const lowestBedroomsCoralModel = idsCoralModel.reduce(
   (acc, item) => (item.bedrooms < acc.bedrooms ? item : acc),
   idsCoralModel[0]
 )
-
-console.log({
-  lowestSizeCaracolModel,
-  lowestSizeCoralModel,
-  lowestPriceCaracolModel,
-  lowestPriceCoralModel,
-  lowestBedroomsCaracolModel,
-  lowestBedroomsCoralModel
-})
 ---
 
 <div class='flex flex-col md:hidden w-full max-w-sm gap-8'>
