@@ -118,13 +118,13 @@ const t = useTranslations(lang)
             class='grid grid-cols-2 grid-rows-3 gap-x-3 gap-y-1 font-extralight tracking-wide text-sm lg:text-lg [&>h4]:font-normal'
           >
             <h4>{t('inventory.lote')}</h4>
-            <p id='lote'>{inventoryData[0].lote} m2</p>
+            <p id='lote'>{inventoryData[0].lote}</p>
 
             <h4>{t('inventory.inside')}</h4>
-            <p id='inside'>{inventoryData[0].inside} m2</p>
+            <p id='inside'>{inventoryData[0].inside}</p>
 
             <h4>{t('inventory.outside')}</h4>
-            <p id='outside'>{inventoryData[0].outside} m2</p>
+            <p id='outside'>{inventoryData[0].outside}</p>
 
             <h4>{t('inventory.restrooms')}</h4>
             <p id='restrooms'>{inventoryData[0].restrooms}</p>
@@ -156,7 +156,7 @@ const t = useTranslations(lang)
             id='model-image'
             src={inventoryData[0].image}
             alt={t('inventory.image')}
-            class='w-full h-full object-cover object-left'
+            class='w-full h-full object-cover object-right'
           />
         </div>
       </article>
@@ -224,8 +224,8 @@ const t = useTranslations(lang)
       if (priceRooftopElement) priceRooftopElement.textContent = priceRooftop
 
       modelImageElement.classList.remove('object-left', 'object-right')
-      if (model === 'caracol') modelImageElement.classList.add('object-left')
-      if (model === 'coral') modelImageElement.classList.add('object-right')
+      if (model === 'coral') modelImageElement.classList.add('object-left')
+      if (model === 'caracol') modelImageElement.classList.add('object-right')
 
       inventoryData.forEach((data) => {
         data.classList.replace('md:opacity-100', 'md:opacity-80')

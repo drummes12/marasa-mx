@@ -29,19 +29,9 @@ const SECTIONS = [
     animation-name: nav-enter;
     animation-fill-mode: both;
     animation-timeline: scroll();
-    animation-range: entry 100% cover 100%;
-
-    @media (max-width: 768px) {
-      animation-range: entry 10% cover 12%;
-      position: sticky;
-      top: 1rem;
-    }
-
-    @media (min-width: 1280px) {
-      animation-range: entry 10% cover 12%;
-      position: sticky;
-      top: 2rem;
-    }
+    animation-range: entry 10% cover 12%;
+    position: sticky;
+    top: 1rem;
   }
 
   @keyframes nav-enter {
