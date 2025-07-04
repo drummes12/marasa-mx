@@ -16,6 +16,7 @@ import estiloDeFachadaModeloCoral from '@/assets/images/life-style/estilo-de-fac
 import marasaCasaResidencialModeloCaracol from '@/assets/images/life-style/marasa-casa-residencial-modelo-caracol.png'
 import marasaResidencialDistribucionRooftop from '@/assets/images/life-style/marasa-residencial-distribucion-rooftop.png'
 import residencialDistribucionPlantaAltaPuertoVallarta from '@/assets/images/life-style/residencial-distribucion-planta-alta-puertoVallarta.png'
+import residencialDistribucionPlantaRoofPuertoVallarta from '@/assets/images/life-style/residencial-distribucion-planta-roof-puertoVallarta.png'
 
 import ubication from '@/assets/images/ubicacion-marasa-residencial-gaviotas.jpg'
 
@@ -100,6 +101,12 @@ export const imagesLifeStyle = [
     screenResolution: 'mobile'
   },
   {
+    src: residencialDistribucionPlantaRoofPuertoVallarta,
+    alt: 'Residencial Distribución Planta Roof Puerto Vallarta',
+    tags: ['coral-model'],
+    screenResolution: 'mobile'
+  },
+  {
     src: marasaCasaResidencialModeloCaracol,
     alt: 'Marasa Casa Residencial Modelo Caracol',
     tags: ['caracol-model'],
@@ -126,6 +133,12 @@ export const imagesLifeStyle = [
   {
     src: residencialDistribucionPlantaAltaPuertoVallarta,
     alt: 'Residencial Distribución Planta Alta Puerto Vallarta',
+    tags: ['caracol-model'],
+    screenResolution: 'mobile'
+  },
+  {
+    src: residencialDistribucionPlantaRoofPuertoVallarta,
+    alt: 'Residencial Distribución Planta Roof Puerto Vallarta',
     tags: ['caracol-model'],
     screenResolution: 'mobile'
   },
