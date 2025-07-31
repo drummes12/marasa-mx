@@ -93,5 +93,22 @@ export default {
   'quote.title': 'Cotiza con nosotros',
   'quote.paragraph':
     'Comunicate con nosotros para obtener más información sobre este proyecto.',
-  'quote.button': 'Cotiza aquí'
+  'quote.button': 'Cotiza aquí',
+  'privacy.title': 'Aviso de Privacidad',
+  'privacy.section': 'Política de',
+  'privacy.content.intro': 'En Marasa Residencial, nos comprometemos a proteger y respetar su privacidad. Este aviso de privacidad explica cómo recopilamos, utilizamos y protegemos su información personal.',
+  'privacy.content.collection.title': 'Recopilación de Información',
+  'privacy.content.collection.text': 'Recopilamos información personal que usted nos proporciona directamente, como su nombre, dirección de correo electrónico, número de teléfono y cualquier otra información que decida compartir con nosotros al contactarnos o solicitar información sobre nuestros desarrollos.',
+  'privacy.content.use.title': 'Uso de la Información',
+  'privacy.content.use.text': 'Utilizamos su información personal para: responder a sus consultas, proporcionarle información sobre nuestros desarrollos inmobiliarios, comunicarnos con usted sobre nuestros servicios, y mejorar nuestros servicios y experiencia del cliente.',
+  'privacy.content.protection.title': 'Protección de Datos',
+  'privacy.content.protection.text': 'Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger su información personal contra el acceso no autorizado, alteración, divulgación o destrucción.',
+  'privacy.content.sharing.title': 'Compartir Información',
+  'privacy.content.sharing.text': 'No vendemos, intercambiamos o transferimos su información personal a terceros sin su consentimiento, excepto cuando sea necesario para proporcionar nuestros servicios o cuando lo requiera la ley.',
+  'privacy.content.rights.title': 'Sus Derechos',
+  'privacy.content.rights.text': 'Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales. Para ejercer estos derechos, puede contactarnos a través de los medios proporcionados en este sitio web.',
+  'privacy.content.contact.title': 'Contacto',
+  'privacy.content.contact.text': 'Si tiene preguntas sobre este aviso de privacidad o sobre el manejo de su información personal, puede contactarnos en la dirección: Av. Paseo del Marlin 87, Las Gaviotas, 48328 Puerto Vallarta, Jal.',
+  'privacy.content.updates.title': 'Actualizaciones',
+  'privacy.content.updates.text': 'Nos reservamos el derecho de actualizar este aviso de privacidad en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en este sitio web.'
 }

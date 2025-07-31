@@ -1,0 +1,51 @@
+---
+import logo from '@/assets/logo-blanco.svg'
+import LanguagePicker from '@/components/language-picker.astro'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+import { imagesHero } from '@/consts/images'
+import { Image } from 'astro:assets'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section>
+  <div class='relative flex items-center justify-center'>
+    <div class='absolute inset-0 w-full h-full pointer-events-none'>
+      <div
+        class='absolute left-0 top-0 w-full h-1/2 bg-gradient-to-b from-black/60 to-transparent'
+      >
+      </div>
+    </div>
+    <div class='absolute inset-0 w-full h-full pointer-events-none'>
+      <div
+        class='absolute left-0 bottom-0 w-full h-1/4 bg-gradient-to-t from-white to-transparent'
+      >
+      </div>
+    </div>
+
+    <Image
+      src={imagesHero[0].src}
+      alt='Hero image'
+      class='-z-10 absolute inset-0 w-full h-full object-cover'
+    />
+    <LanguagePicker />
+    <a href={`/${lang === 'es' ? '' : lang}`} class='z-10 my-32'>
+      <img src={logo.src} alt='Logo de Marasa' class='h-32' />
+    </a>
+  </div>
+
+  <header
+    class='z-10 uppercase text-center pt-14 pb-4 h-fit flex flex-col items-center gap-8'
+  >
+    <h2 class='text-md md:text-xl tracking-[1rem] text-primary-coral'>
+      {t('privacy.section')}
+    </h2>
+    <h1
+      class='text-2xl sm:text-3xl md:text-5xl tracking-[1rem] font-semibold leading-tight text-primary-blue'
+    >
+      {t('privacy.title')}
+    </h1>
+  </header>
+</section>

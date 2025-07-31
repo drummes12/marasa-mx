@@ -2,6 +2,10 @@
 import logo from '@/assets/logo-blanco.svg'
 import FacebookIcon from '@/components/icons/facebook.astro'
 import InstagramIcon from '@/components/icons/instagram.astro'
+import { getLangFromUrl } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const privacyUrl = lang === 'en' ? '/en/privacy-notice' : '/aviso-de-privacidad'
 ---
 
 <footer class='w-full h-fit'>
@@ -26,7 +30,7 @@ import InstagramIcon from '@/components/icons/instagram.astro'
       <div
         class='flex flex-col items-center text-center text-sm md:text-start md:items-start md:flex-row gap-x-4 gap-y-2 [&>a]:hover:underline'
       >
-        <a class='font-extralight tracking-[0.2rem] uppercase' href='#'
+        <a class='font-extralight tracking-[0.2rem] uppercase' href={privacyUrl}
           >Aviso de privacidad</a
         >
         <div class='hidden md:block'>&bull;</div>
