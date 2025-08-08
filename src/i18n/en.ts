@@ -6,8 +6,8 @@ export default {
   'navbar.commons-areas': 'Commons Areas',
   'navbar.inventory': 'Inventory',
   'navbar.gallery': 'Gallery',
-  'home.title': 'Marasa Residencial',
-  'home.description': 'Marasa',
+  'home.title': 'Marasa Residencial - Luxury Homes in Puerto Vallarta | Exclusive Development',
+  'home.description': 'Discover Marasa Residencial, an exclusive development of 19 luxury homes in Puerto Vallarta, Jalisco. Properties with minimalist design, premium amenities and privileged location. Ideal real estate investment in Mexico.',
   'welcome.section': 'Welcome to',
   'welcome.paragraph':
     'An exclusive development in Puerto Vallarta that redefines the concept of home. Located in one of the city’s most privileged areas, it offers the perfect blend of privacy, comfort, and a unique lifestyle.',

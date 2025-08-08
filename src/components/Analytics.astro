@@ -1,0 +1,69 @@
+---
+// Google Analytics and other tracking scripts
+const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID
+const GTM_ID = import.meta.env.PUBLIC_GTM_ID
+---
+
+<!-- Google Analytics -->
+{GA_MEASUREMENT_ID && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', `${GA_MEASUREMENT_ID}`);
+    </script>
+  </>
+)}
+
+<!-- Google Tag Manager -->
+{GTM_ID && (
+  <>
+    <script is:inline>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0];
+        var j=d.createElement(s);
+        var dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        if(f.parentNode) f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',`${GTM_ID}`);
+    </script>
+  </>
+)}
+
+<!-- Schema.org for Local Business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://marasa.mx/#business",
+  "name": "Marasa Residencial",
+  "description": "Desarrollo residencial exclusivo en Puerto Vallarta con condos y casas de lujo",
+  "url": "https://marasa.mx",
+  "telephone": "+52-322-XXX-XXXX",
+  "email": "contacto@marasa.mx",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Puerto Vallarta",
+    "addressLocality": "Puerto Vallarta",
+    "addressRegion": "Jalisco",
+    "postalCode": "48300",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 20.653407,
+    "longitude": -105.225021
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "$$$",
+  "areaServed": {
+    "@type": "City",
+    "name": "Puerto Vallarta"
+  }
+}
+</script>

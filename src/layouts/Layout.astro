@@ -2,22 +2,76 @@
 import '@/styles/global.css'
 import '@fontsource-variable/montserrat'
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import SEOHead from '@/components/SEOHead.astro'
+import Analytics from '@/components/Analytics.astro'
+
+export interface Props {
+  title?: string
+  description?: string
+  keywords?: string
+  ogImage?: string
+  canonicalURL?: string
+  noindex?: boolean
+  structuredData?: object
+}
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+
+const {
+  title = t('home.title'),
+  description = t('home.description'),
+  keywords = lang === 'es'
+    ? 'Marasa Residencial, Puerto Vallarta, casas en venta, desarrollo inmobiliario, bienes raíces, propiedades exclusivas, residencial de lujo, inversión inmobiliaria, Jalisco, México'
+    : 'Marasa Residencial, Puerto Vallarta, houses for sale, real estate development, luxury properties, exclusive residential, real estate investment, Jalisco, Mexico',
+  ogImage = '/images/og_image.png',
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  noindex = false,
+  structuredData
+} = Astro.props
+
+// Default structured data for business
+const defaultStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  name: 'Marasa Residencial',
+  description:
+    'Desarrollo residencial exclusivo en Puerto Vallarta con condos y casas de lujo',
+  url: Astro.site,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Puerto Vallarta',
+    addressRegion: 'Jalisco',
+    addressCountry: 'MX'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 20.653407,
+    longitude: -105.225021
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Puerto Vallarta'
+  }
+}
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' href='/favicon.png' type='image/png' />
-    <meta name='generator' content={Astro.generator} />
-    <meta name='description' content={t('home.description')} />
-    <title>{t('home.title')}</title>
+    <SEOHead
+      title={title}
+      description={description}
+      keywords={keywords}
+      ogImage={ogImage}
+      canonicalURL={canonicalURL.toString()}
+      lang={lang}
+      noindex={noindex}
+      structuredData={structuredData || defaultStructuredData}
+    />
   </head>
   <body>
+    <Analytics />
     <slot />
   </body>
 </html>

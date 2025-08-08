@@ -4,9 +4,29 @@ import PrivacyHero from '@/components/privacy-hero.astro'
 import PrivacyContent from '@/components/privacy-content.astro'
 import Footer from '@/components/footer.astro'
 import Sticky from '@/components/sticky.astro'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const privacyTitle = lang === 'es' 
+  ? 'Aviso de Privacidad - Marasa Residencial | Protección de Datos Personales'
+  : 'Privacy Notice - Marasa Residencial | Personal Data Protection'
+
+const privacyDescription = lang === 'es'
+  ? 'Consulta nuestro aviso de privacidad y política de protección de datos personales de Marasa Residencial. Conoce cómo protegemos tu información conforme a la ley mexicana.'
+  : 'Check our privacy notice and personal data protection policy for Marasa Residencial. Learn how we protect your information in accordance with Mexican law.'
+
+const privacyKeywords = lang === 'es'
+  ? 'aviso de privacidad, protección de datos, política de privacidad, Marasa Residencial, datos personales, LFPDPPP, privacidad México'
+  : 'privacy notice, data protection, privacy policy, Marasa Residencial, personal data, LFPDPPP, privacy Mexico'
 ---
 
-<Layout>
+<Layout 
+  title={privacyTitle}
+  description={privacyDescription}
+  keywords={privacyKeywords}
+>
   <Sticky />
   <PrivacyHero />
   <PrivacyContent />

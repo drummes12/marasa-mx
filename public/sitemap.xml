@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage Spanish -->
+  <url>
+    <loc>https://marasa.mx/</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marasa.mx/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://marasa.mx/" />
+  </url>
+  
+  <!-- Homepage English -->
+  <url>
+    <loc>https://marasa.mx/en/</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marasa.mx/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://marasa.mx/" />
+  </url>
+  
+  <!-- Privacy Notice Spanish -->
+  <url>
+    <loc>https://marasa.mx/aviso-de-privacidad</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marasa.mx/en/privacy-notice" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://marasa.mx/aviso-de-privacidad" />
+  </url>
+  
+  <!-- Privacy Notice English -->
+  <url>
+    <loc>https://marasa.mx/en/privacy-notice</loc>
+    <lastmod>2025-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marasa.mx/en/privacy-notice" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://marasa.mx/aviso-de-privacidad" />
+  </url>
+  
+</urlset>
