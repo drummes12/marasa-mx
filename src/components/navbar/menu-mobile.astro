@@ -37,7 +37,7 @@ const { sections } = Astro.props
         <li id={`navbar-${href.replaceAll('/#', '')}`}>
           <a
             class='block w-full px-4 py-4 hover:text-primary-coral'
-            href={href}
+            href={lang === 'es' ? href : `/${lang}` + href}
           >
             {title}
           </a>

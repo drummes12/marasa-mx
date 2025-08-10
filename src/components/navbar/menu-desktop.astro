@@ -1,5 +1,8 @@
 ---
 const { sections } = Astro.props
+import { getLangFromUrl } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
 ---
 
 <ul
@@ -14,7 +17,7 @@ const { sections } = Astro.props
           href === '/#welcome' ? 'section-active' : ''
         }`}
       >
-        <a href={href}>{title}</a>
+        <a href={lang === 'es' ? href : `/${lang}` + href}>{title}</a>
       </li>
     ))
   }

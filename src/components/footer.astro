@@ -2,9 +2,10 @@
 import logo from '@/assets/logo-blanco.svg'
 import FacebookIcon from '@/components/icons/facebook.astro'
 import InstagramIcon from '@/components/icons/instagram.astro'
-import { getLangFromUrl } from '@/i18n/utils'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 const privacyUrl = lang === 'en' ? '/en/privacy-notice' : '/aviso-de-privacidad'
 ---
 
@@ -20,7 +21,7 @@ const privacyUrl = lang === 'en' ? '/en/privacy-notice' : '/aviso-de-privacidad'
       class='h-32 mb-8'
     />
     <p>Av. Paseo del Marlin 87, Las Gaviotas, 48328 Puerto Vallarta, Jal.</p>
-    <p>&copy;2025 Marasa. Todos los derechos reservados</p>
+    <p>&copy;2025 Marasa. {t('footer.copyright')}</p>
   </div>
 
   <div class='w-full h-fit bg-primary-coral text-primary-blue'>
@@ -31,7 +32,7 @@ const privacyUrl = lang === 'en' ? '/en/privacy-notice' : '/aviso-de-privacidad'
         class='flex flex-col items-center text-center text-sm md:text-start md:items-start md:flex-row gap-x-4 gap-y-2 [&>a]:hover:underline'
       >
         <a class='font-extralight tracking-[0.2rem] uppercase' href={privacyUrl}
-          >Aviso de privacidad</a
+          >{t('footer.privacy')}</a
         >
       </div>
 
